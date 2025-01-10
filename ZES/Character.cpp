@@ -1,10 +1,10 @@
-#include "Character.h"
 
+
+#include "Character.h"
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <ctime>
 
 using namespace std;
 
@@ -23,10 +23,11 @@ void Character::displayStats()
 	cout << "=====================" << endl;
 	cout << "=====================" << endl;
 	cout << "Name: " << name << endl;
-	cout << ": " <<  << endl;
-	cout << ": " <<  << endl;
-	cout << ": " <<  << endl;
-	cout << "Level: " << level << " Health: " << maxHealth << " Attack: " << attack << " Experience: " << experience << " Gold: " << gold << endl;
+	cout << "Level: " << level << endl;
+	cout << "Health: " << maxHealth << endl;
+	cout << "Attack: " << attack << endl;
+	cout << "Experience: " << experience << endl;
+	cout << "gold: " << gold << endl;
 	cout << "=====================" << endl;
 	cout << "=====================" << endl;
 }
