@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "Characeter.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ public:
 	int getAttack() const;
 
 	virtual void takeDamege(int damage);
-	virtual void attackPlayer(Player& Player);
+	virtual void attackPlayer(Character& Character);
 	virtual void displayInfo() const;
 };
 

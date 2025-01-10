@@ -25,10 +25,10 @@ void monster::takeDamege(int damage) {
 	if (health < 0) health = 0;
 }
 
-void monster::attackPlayer(Player& player) {
-	player.takeDamage(attack);
+void monster::attackPlayer(Character& Character) {
+	Character.takeDamage(attack);
 
-	cout << name << "attacks" << player.getName() << "for" << attack << "damage!" << endl;
+	cout << name << "attacks" << Character.getName() << "for" << attack << "damage!" << endl;
 }
 
 void monster::displayInfo() const {
