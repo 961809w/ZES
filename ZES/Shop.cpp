@@ -20,11 +20,14 @@ public:
     }
 
     // 상점에서 판매하는 아이템 목록 출력
+	// items.size()는 items 벡터의 크기, 즉 상점에 판매하는 아이템의 개수를 반환. 현재 판매 개수 2개 이므로 size()는 2.
+    // getName()은 각 아이템의 이름을 반환하는 메서드
     void Shop::displayItems() {
         cout << "상점에서 판매하는 아이템 목록:" << endl;
-        for (int i = 0; i < items.size(); i++) {
-            cout << i << ". " << items[i]->getName()  // 아이템 이름
-                << " (가격: " << prices[i] << " 골드)"  // 아이템 가격
+		for (int i = 0; i < items.size(); i++) // i는 아이템의 인덱스를 나타내며, 0부터 시작하여 items.size() 보다 작은값까지 반복. 현재 size는 2이므로 0, 1번째 아이템 출력.
+        {
+            cout << i << ". " << items[i]->getName()  // i 번째 아이템 이름 출력
+                << " (가격: " << prices[i] << " 골드)"  // i 번째 아이템 가격 출력
                 << endl;
         }
     }
