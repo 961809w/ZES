@@ -7,47 +7,38 @@
 using namespace std;
 
 Monster* GameManager::generateMonster(int level) {
-    // ¸ó½ºÅÍ »ı¼º ·ÎÁ÷
-    cout << "·¹º§ " << level << " ¸ó½ºÅÍ »ı¼º Áß" << endl;
-    return new Monster(); // ¸ó½ºÅÍ °´Ã¼ »ı¼º ÈÄ ¹İÈ¯
+    // ëª¬ìŠ¤í„° ìƒì„± ë¡œì§
+    cout << "ë ˆë²¨ " << level << " ëª¬ìŠ¤í„° ìƒì„± ì¤‘" << endl;
+    return new Monster(); // ëª¬ìŠ¤í„° ê°ì²´ ìƒì„± í›„ ë°˜í™˜
 }
 
 void GameManager::battle(Character* player) {
-    // ¹èÆ² ·ÎÁ÷
-    cout << "ÇÃ·¹ÀÌ¾î¿Í ÀüÅõ ½ÃÀÛ : " << player->getName() << endl;
+    // ë°°í‹€ ë¡œì§
+    cout << "í”Œë ˆì´ì–´ì™€ ì „íˆ¬ ì‹œì‘ : " << player->getName() << endl;
 }
 
 void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
-    // ¸ó½ºÅÍ¿Í »óÈ£ÀÛ¿ë ·ÎÁ÷ 
-    cout << "ÇÃ·¹ÀÌ¾î " << player->getName()
-        << " ¿Í ¸ó½ºÅÍ " << monster->getName() << " ÀüÅõ Áß" << endl;
+    // ëª¬ìŠ¤í„°ì™€ ìƒí˜¸ì‘ìš© ë¡œì§ 
+    cout << "í”Œë ˆì´ì–´ " << player->getName()
+        << " ì™€ ëª¬ìŠ¤í„° " << monster->getName() << " ì „íˆ¬ ì¤‘" << endl;
 }
 
-// + ¾Æ·¡ Ãß°¡ÀûÀÎ ¿ä¼Òµé
+// + ì•„ë˜ ì¶”ê°€ì ì¸ ìš”ì†Œë“¤
 void GameManager::displayInventory(const vector<Item*>& inventory) {
-    // ÀÎº¥Åä¸®(¾ÆÀÌÅÛ ¸®½ºÆ®) Ãâ·Â ·ÎÁ÷
-    cout << "ÀÎº¥Åä¸® :" << endl;
+    // ì¸ë²¤í† ë¦¬(ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸) ì¶œë ¥ ë¡œì§
+    cout << "ì¸ë²¤í† ë¦¬ :" << endl;
     for (const auto& item : inventory) {
-        cout << " - " << item->getName() << endl; // ¾ÆÀÌÅÛ ÀÌ¸§ Ãâ·Â
+        cout << " - " << item->getName() << endl; // ì•„ì´í…œ ì´ë¦„ ì¶œë ¥
     }
 }
 
-void GameManager::initializeGame() {
-    // °ÔÀÓ ÃÊ±âÈ­ ·ÎÁ÷
-    cout << "°ÔÀÓ ÃÊ±âÈ­..." << endl;
+/*void GameManager::initializeGame() {
+    // ê²Œì„ ì´ˆê¸°í™” ë¡œì§
+    cout << "ê²Œì„ ì´ˆê¸°í™”..." << endl;
 }
 
 void GameManager::endGame() {
-    // °ÔÀÓ Á¾·á ·ÎÁ÷
-    cout << "°ÔÀÓ Á¾·á..." << endl;
-}
+    // ê²Œì„ ì¢…ë£Œ ë¡œì§
+    cout << "ê²Œì„ ì¢…ë£Œ..." << endl;
+}*/
 
-void GameManager::displayPlayerStatus(Character* player) {
-    // ÇÃ·¹ÀÌ¾î »óÅÂ Ç¥½Ã ·ÎÁ÷
-    cout << "ÇÃ·¹ÀÌ¾î »óÅÂ : " << endl;
-    cout << "ÀÌ¸§ : " << player->getName() << endl;
-    cout << "·¹º§ : " << player->level << endl;
-    cout << "Ã¼·Â : " << player->health << "/" << player->maxHealth << endl;
-    cout << "°æÇèÄ¡ : " << player->experience << endl;
-    cout << "°ñµå : " << player->gold << endl;
-}
