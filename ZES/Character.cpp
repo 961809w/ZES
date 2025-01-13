@@ -54,7 +54,7 @@ void Character::levelUp()
 	}
 }
 
-void Character::useItem(int index)
+void Character::useItem()
 {
 	if (inventory.size() == 0)
 	{
@@ -68,7 +68,7 @@ void Character::useItem(int index)
 	cout << "아이템 사용!" << endl;
 	cout << endl;
 	delete Nth_Item;
-	inventory.erase(inventory.begin() + index);
+	inventory.erase(inventory.begin() + randindex);
 }
 
 string Character::getName() const
