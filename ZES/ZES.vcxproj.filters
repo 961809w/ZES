@@ -23,7 +23,7 @@
     <ClCompile Include="GPT.cpp">
       <Filter>리소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Characeter.cpp">
+    <ClCompile Include="Character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,7 +31,7 @@
     <ClInclude Include="main.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Characeter.h">
+    <ClInclude Include="Character.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
