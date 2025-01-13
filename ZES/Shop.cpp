@@ -51,17 +51,18 @@ public:
         }
     }
 
+    //player->inventory 와 상점의 item 목록을 비교하여 판매
     void Shop::sellItem(int index, Character* player) {
-        if (index >= 0 && index < items.size()) {
+        if (index >= 0 && index < player->inventory.size()) {
             int price = prices[index] / 2;  // 판매 금액은 원래 가격의 절반
             player->gold += price;
-            cout << items[index]->getName() << " 아이템을 판매했습니다." << endl;
+            cout << player->inventory[index]->getName() << " 아이템을 인벤토리에서 판매했습니다." << endl;
             cout << "판매 금액: " << price << " 골드" << endl;
             cout << "현재 골드: " << player->gold << endl;
 
             // 판매한 아이템 제거
-            delete items[index];
-            items.erase(items.begin() + index);
+            delete  player->inventory[index];
+            player->inventory.erase(player->inventory.begin() + index);
             prices.erase(prices.begin() + index);
         }
         else {
