@@ -8,7 +8,7 @@
 using namespace std;
 
 //Monster class 구현
-Monster::Monster(const string& name, int health, int attack) : name(name), health(health), attack(attack) {}
+Monster::Monster(const string& name, int health, int attack, int experience) : name(name), health(health), attack(attack), experience(experience) {}
 
 Monster::~Monster() {}
 
@@ -24,78 +24,91 @@ int Monster::getAttack() const {
 	return attack;
 }
 
-void Monster::takeDamege(int damage) {
+int Monster::getExperience() const {
+	return experience;
+}
+
+void Monster::takeDamage(int damage) {
 	health -= damage;
 	if (health < 0) health = 0;
 }
 
-void Monster::attackPlayer(Character& Character) {
-	Character.takeDamage(attack);
+void Monster::attackPlayer(Character& character) {
+	character.takeDamage(attack);
 
-	cout << name << "attacks" << Character.getName() << "for" << attack << "damage!" << endl;
+	cout << name << "가" << character.getName() << "공격했습니다." << attack << "데미지" << endl;
 }
 
 void Monster::displayInfo() const {
-	cout << "Monster: " << name << "Hralth: " << health << "Attack: " << attack << endl;
+	cout << "몬스터 " << name << "체력 " << health << "공격 " << attack << endl;
+}
+
+void Monster::grantexperienceToPlayer(Character& character) {
+	cout << name << " 쓰러트렸다 " << character.getName() << " 얻었습니다. " << experience << " 경험치" << endl;
+	character.gainExperience(experience);
 }
 
 //아이템 드랍 설정
 unique_ptr<Item> Monster::dropitem() {
 	srand(static_cast<unsigned int>(time(nullptr)));
-	
-	int EXP = (rand() % 100) + 10;
-	cout << "처지 보상" << EXP << "경험치" << endl;
+
+	int experience = (rand() % 100) + 10;
+	cout << "처지 보상" << experience << "경험치" << endl;
 
 	Character.gainExperience(EXP);
 
-	int MoneyAmount = (rand() % 100) + 1;
-	cout << "처지 보상" << MoneyAmount << "골드" << endl;
+	int gold = (rand() % 100) + 1;
+	cout << "처지 보상" << gold << "골드" << endl;
 
-	int chance = rand() % 100; 
-	
-	if (chance < 30){
+	int chance = rand() % 100;
+
+	if (chance < 30) {
 		cout << "포션을 하나를 손에 넣었다!" << endl;
-		return make_unique<Potion>();
+		return make_unique<HealthPotion>();
+	}
+	if (chance < 30) && chance < 60){
+		cout << name << "어택부스트를 손에 넣었다!" << endl;
+		return make_unique<AttackBoost>();
 	}
 
-return make_unique<Money>(MoneyAmount);
+return make_unique<gold>(gold);
 }
 
 
 
 //watt 1500K class
-watt1500K::watt1500K() : Monster("watt 1500K", 10, 5) {
+watt1500K::watt1500K() : Monster("와트레드", 10, 5, 10) {
 }
 
 //watt 3000K class
-watt3000K::watt3000K() : Monster("watt 3000K", 30, 6) {
+watt3000K::watt3000K() : Monster("와트레드+", 30, 6, 15) {
 }
 
 //watt 4000K class
-watt4000K::watt4000K() : Monster("watt 4000K", 50, 9) {
+watt4000K::watt4000K() : Monster("와트엘로우", 50, 9, 20) {
 }
 
 //watt 4500K class
-watt4500K::watt4500K() : Monster("watt 4500K", 55, 10) {
+watt4500K::watt4500K() : Monster("와트엘로우+", 55, 10, 25) {
 }
 
 //watt 5000K class
-watt5000K::watt5000K() : Monster("watt 5000K", 60, 12) {
+watt5000K::watt5000K() : Monster("와트그린", 60, 12, 30) {
 }
 
 //watt 6000K class
-watt6000K::watt6000K() : Monster("watt 4500K", 65, 14) {
+watt6000K::watt6000K() : Monster("와트그린+", 65, 14, 35) {
 }
 
 //watt 8000K class
-watt8000K::watt8000K() : Monster("watt 8000K", 80, 18) {
+watt8000K::watt8000K() : Monster("와트블루", 80, 18, 40) {
 }
 
 //watt 10000K class
-watt10000K::watt10000K() : Monster("watt 10000K", 100, 25) {
+watt10000K::watt10000K() : Monster("와트블루+", 100, 25, 45) {
 }
 
 //watt 15000K class
-watt15000K::watt15000K() : Monster("watt 15000K", 300, 50) {
+watt15000K::watt15000K() : Monster("레인보우와트", 300, 50, 150) {
 }
 
