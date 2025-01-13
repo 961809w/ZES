@@ -17,11 +17,11 @@ void GameManager::battle(Character* player) {
     cout << "플레이어와 전투 시작 : " << player->getName() << endl;
 }
 
-void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
+/*void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
     // 몬스터와 상호작용 로직 
     cout << "플레이어 " << player->getName()
         << " 와 몬스터 " << monster->getName() << " 전투 중" << endl;
-}
+}*/
 
 // + 아래 추가적인 요소들
 void GameManager::displayInventory(const vector<Item*>& inventory) {
