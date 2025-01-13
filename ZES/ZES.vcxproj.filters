@@ -17,7 +17,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="소스파일\main.cpp">
       <Filter>메인 파일</Filter>
     </ClCompile>
     <ClCompile Include="소스파일\Character.cpp">
@@ -31,13 +31,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="헤더파일\Character.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="헤더파일\GameManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="헤더파일\Item.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="헤더파일\main.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="헤더파일\Monster.h">

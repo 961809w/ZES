@@ -8,8 +8,8 @@
 #include <algorithm>
 #include <random>
 #include <memory>
-#include "../헤더파일/Character.h"
-#include "../헤더파일/Item.h"
+#include "Characeter.h"
+#include "Item.h"
 
 using namespace std;
 
