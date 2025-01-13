@@ -25,8 +25,9 @@ public:
 	void displayStats();
 	void levelUp();
 	void useItem(int index);
+
+	string getName() const;
+	void gainExperience(int experience);
 };
-
-
 
 #endif

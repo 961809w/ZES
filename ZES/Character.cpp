@@ -29,12 +29,12 @@ void Character::displayStats()
 	cout << endl;
 	cout << "=========================" << endl;
 	cout << "=========================" << endl;
-	cout << "      Name : " << name << endl;
-	cout << "     Level : " << level << endl;
-	cout << "    Health : " << maxHealth << endl;
-	cout << "    Attack : " << attack << endl;
-	cout << "Experience : " << experience << endl;
-	cout << "      gold : " << gold << endl;
+	cout << "      이름 : " << name << endl;
+	cout << "      레벨 : " << level << endl;
+	cout << "      체력 : " << maxHealth << endl;
+	cout << "    공격력 : " << attack << endl;
+	cout << "    경험치 : " << experience << endl;
+	cout << "      골드 : " << gold << endl;
 	cout << "=========================" << endl;
 	cout << "=========================" << endl;
 	cout << endl;
@@ -69,4 +69,15 @@ void Character::useItem(int index)
 	cout << endl;
 	delete Nth_Item;
 	inventory.erase(inventory.begin() + index);
+}
+
+string Character::getName() const
+{
+	return name;
+}
+
+void Character::gainExperience(int experience)
+{
+	this->experience += experience;
+	levelUp();
 }
