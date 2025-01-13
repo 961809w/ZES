@@ -20,19 +20,23 @@ protected:
 	string name;
 	int health;
 	int attack;
+	int experience;
 
 public:
-	Monster(const string& name, int health, int attack);
+	Monster(const string& name, int health, int attack, int experience);
 	virtual ~Monster();
 
 	string getName() const;
 	int getHealth() const;
 	int getAttack() const;
+	int getExpperience() const;
 
 	virtual void takeDamege(int damage);
 	virtual void attackPlayer(Character& Character);
-	virtual void displayInfo() const;
+	virtual void grantexperienceToPlayer(Character& Character);
 	unique_ptr<Item> dropitem();
+
+	virtual void displayInfo() const;
 };
 
 
