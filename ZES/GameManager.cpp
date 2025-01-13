@@ -1,7 +1,7 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "Monster.h"
-#include "item. h"
+#include "item.h"
 #include <vector>
 #include <iostream>
 using namespace std;

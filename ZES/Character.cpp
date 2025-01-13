@@ -1,5 +1,3 @@
-
-
 #include "Character.h"
 #include <iostream>
 #include <string>

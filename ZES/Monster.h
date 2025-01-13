@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <random>
 #include <memory>
-#include "Characeter.h"
+#include "Character.h"
 #include "Item.h"
 
 using namespace std;

@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="소스파일\Character.cpp" />
-    <ClCompile Include="소스파일\GameManager.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="소스파일\main.cpp" />
-    <ClCompile Include="소스파일\Monster.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="헤더파일\Character.h" />
-    <ClInclude Include="헤더파일\GameManager.h" />
-    <ClInclude Include="헤더파일\Item.h" />
-    <ClInclude Include="헤더파일\main.h" />
-    <ClInclude Include="헤더파일\Monster.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="Monster.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
