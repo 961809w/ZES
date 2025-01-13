@@ -1,5 +1,5 @@
-#ifndef ITEM_H_
-#define ITEM_H_
+#ifndef Item_H_
+#define Item_H_
 
 #include <iostream>
 #include <string>
@@ -8,23 +8,26 @@
 
 using namespace std;
 
-class Item {
-protected:
-    string name;
 
+class Item {
 public:
-    Item(const string& name) : name(name) {}
-    
-    
+    virtual std::string getName() const = 0;
+    virtual void use(Character* character) = 0;
+    virtual ~Item() = default;
 };
+
+
 
 // 체력 회복 아이템
 class HealthPotion : public Item {
 private:
+    string name; 
     int healthRestore;
 
 public:
-    HealthPotion(int healthRestore) : Item("체력 회복 포션"), healthRestore(healthRestore) {}
+    HealthPotion(int healthRestore);
+    string getName() const override;
+    void use(Character*character) override;
 
     
 };
@@ -32,11 +35,13 @@ public:
 // 공격력 증가 아이템
 class AttackBoost : public Item {
 private:
+    string name;
     int attackIncrease;
 
 public:
-    AttackBoost(int attackIncrease) : Item("공격력 증가 아이템"), attackIncrease(attackIncrease) {}
-
+    AttackBoost(int attackIncrease);
+    string getName() const override;
+    void use(Character* character) override;
 
 };
 
