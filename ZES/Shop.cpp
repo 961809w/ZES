@@ -51,7 +51,7 @@ public:
         }
     }
 
-    //player->inventory 와 상점의 item 목록을 비교하여 판매
+    
     void Shop::sellItem(int index, Character* player) {
         if (index >= 0 && index < player->inventory.size()) {
             int price = prices[index] / 2;  // 판매 금액은 원래 가격의 절반
