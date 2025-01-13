@@ -24,9 +24,10 @@ public:
 	static Character* getInstance(string name = "");
 	void displayStats();
 	void levelUp();
-	void useItem(int index);
+	void useItem();
+
+	string getName() const;
+	void gainExperience(int experience);
 };
-
-
 
 #endif
