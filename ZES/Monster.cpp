@@ -43,13 +43,18 @@ void Monster::displayInfo() const {
 unique_ptr<Item> Monster::dropitem() {
 	srand(static_cast<unsigned int>(time(nullptr)));
 	
+	int EXP = (rand() % 100) + 10;
+	cout << "처지 보상" << EXP << "경험치" << endl;
+
+	Character.gainExperience(EXP);
+
 	int MoneyAmount = (rand() % 100) + 1;
 	cout << "처지 보상" << MoneyAmount << "골드" << endl;
 
 	int chance = rand() % 100; 
 	
 	if (chance < 30){
-		cout << "포션을 손에 넣었다!" << endl;
+		cout << "포션을 하나를 손에 넣었다!" << endl;
 		return make_unique<Potion>();
 	}
 
