@@ -33,19 +33,20 @@ void Monster::takeDamage(int damage) {
 	if (health < 0) health = 0;
 }
 
+//몬스터가 캐릭터를 공격하는 함수
 void Monster::attackPlayer(Character& character) {
-	character.takeDamage(attack);
+	character.maxHealth -= attack;
 
-	cout << name << "가" << character.getName() << "공격했습니다." << attack << "데미지" << endl;
+	cout << name << "이(가)" << character.name << "를 공격했습니다." << attack << "데미지" << endl;
 }
 
 void Monster::displayInfo() const {
-	cout << "몬스터 " << name << "체력 " << health << "공격 " << attack << endl;
+	cout << "몬스터: " << name << "체력: " << health << "공격: " << attack << endl;
 }
 
 void Monster::grantexperienceToPlayer(Character& character) {
-	cout << name << " 쓰러트렸다 " << character.getName() << " 얻었습니다. " << experience << " 경험치" << endl;
-	character.gainExperience(experience);
+	cout << name << " 를 쓰러트렸다 " << character.name << " 얻었습니다. " << experience << " 경험치 획득" << endl;
+	character.experience += experience;
 }
 
 //아이템 드랍 설정
@@ -54,8 +55,6 @@ unique_ptr<Item> Monster::dropitem() {
 
 	int experience = (rand() % 100) + 10;
 	cout << "처지 보상" << experience << "경험치" << endl;
-
-	Character.gainExperience(EXP);
 
 	int gold = (rand() % 100) + 1;
 	cout << "처지 보상" << gold << "골드" << endl;
@@ -66,12 +65,12 @@ unique_ptr<Item> Monster::dropitem() {
 		cout << "포션을 하나를 손에 넣었다!" << endl;
 		return make_unique<HealthPotion>();
 	}
-	if (chance < 30) && chance < 60){
+	if (chance < 30 && chance < 60) {
 		cout << name << "어택부스트를 손에 넣었다!" << endl;
 		return make_unique<AttackBoost>();
 	}
 
-return make_unique<gold>(gold);
+	return make_unique<Item>(gold);
 }
 
 
