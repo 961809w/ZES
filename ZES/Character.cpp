@@ -60,13 +60,11 @@ void Character::useItem(int index)
 	{
 		return;
 	}
-	srand(time(nullptr));
-	int randindex = rand() % inventory.size();
-	Item* Nth_Item = inventory[randindex];
+	Item* item = inventory[index];
 
-	Nth_Item->use(this);
+	item->use(this);
 	cout << "아이템 사용!" << endl;
 	cout << endl;
-	delete Nth_Item;
+	delete item;
 	inventory.erase(inventory.begin() + index);
 }
