@@ -28,7 +28,6 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="Monster.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
