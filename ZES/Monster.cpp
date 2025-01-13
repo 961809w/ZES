@@ -51,7 +51,7 @@ void Monster::grantexperienceToPlayer(Character& character) {
 //아이템 드랍 설정
 unique_ptr<Item> Monster::dropitem() {
 	srand(static_cast<unsigned int>(time(nullptr)));
-	
+
 	int experience = (rand() % 100) + 10;
 	cout << "처지 보상" << experience << "경험치" << endl;
 
@@ -60,11 +60,15 @@ unique_ptr<Item> Monster::dropitem() {
 	int gold = (rand() % 100) + 1;
 	cout << "처지 보상" << gold << "골드" << endl;
 
-	int chance = rand() % 100; 
-	
-	if (chance < 30){
+	int chance = rand() % 100;
+
+	if (chance < 30) {
 		cout << "포션을 하나를 손에 넣었다!" << endl;
 		return make_unique<HealthPotion>();
+	}
+	if (chance < 30) && chance < 60){
+		cout << name << "어택부스트를 손에 넣었다!" << endl;
+		return make_unique<AttackBoost>();
 	}
 
 return make_unique<gold>(gold);
