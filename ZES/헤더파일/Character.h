@@ -1,7 +1,7 @@
 #ifndef CHARACTER_H_
 #define CHARACTER_H_
 
-#include "Item.h"
+#include "../헤더파일/Item.h"
 
 using namespace std;
 
