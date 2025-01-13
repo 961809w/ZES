@@ -8,25 +8,25 @@ using namespace std;
 
 Monster* GameManager::generateMonster(int level) {
     // 몬스터 생성 로직
-    cout << "Generating a monster of level " << level << endl;
-    return new Monster(); // 몬스터 객체 생성 필요
+    cout << "레벨 " << level << " 몬스터 생성 중" << endl;
+    return new Monster(); // 몬스터 객체 생성 후 반환
 }
 
 void GameManager::battle(Character* player) {
     // 배틀 로직
-    cout << "Battle initiated with player: " << player->getName() << endl;
+    cout << "플레이어와 전투 시작 : " << player->getName() << endl;
 }
 
 void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
     // 몬스터와 상호작용 로직 
-    cout << "Handling interaction between player " << player->getName()
-        << " and monster " << monster->getName() << endl;
+    cout << "플레이어 " << player->getName()
+        << " 와 몬스터 " << monster->getName() << " 전투 중" << endl;
 }
 
-// + 추가적인 요소들
+// + 아래 추가적인 요소들
 void GameManager::displayInventory(const vector<Item*>& inventory) {
     // 인벤토리(아이템 리스트) 출력 로직
-    cout << "Displaying inventory:" << endl;
+    cout << "인벤토리 :" << endl;
     for (const auto& item : inventory) {
         cout << " - " << item->getName() << endl; // 아이템 이름 출력
     }
@@ -34,20 +34,20 @@ void GameManager::displayInventory(const vector<Item*>& inventory) {
 
 void GameManager::initializeGame() {
     // 게임 초기화 로직
-    cout << "Initializing the game..." << endl;
+    cout << "게임 초기화..." << endl;
 }
 
 void GameManager::endGame() {
     // 게임 종료 로직
-    cout << "Ending the game..." << endl;
+    cout << "게임 종료..." << endl;
 }
 
 void GameManager::displayPlayerStatus(Character* player) {
     // 플레이어 상태 표시 로직
-    cout << "Player Status: " << endl;
-    cout << "Name: " << player->getName() << endl;
-    cout << "Level: " << player->level << endl;
-    cout << "Health: " << player->health << "/" << player->maxHealth << endl;
-    cout << "Experience: " << player->experience << endl;
-    cout << "Gold: " << player->gold << endl;
+    cout << "플레이어 상태 : " << endl;
+    cout << "이름 : " << player->getName() << endl;
+    cout << "레벨 : " << player->level << endl;
+    cout << "체력 : " << player->health << "/" << player->maxHealth << endl;
+    cout << "경험치 : " << player->experience << endl;
+    cout << "골드 : " << player->gold << endl;
 }

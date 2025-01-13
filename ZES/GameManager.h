@@ -11,13 +11,13 @@ public:
     // 몬스터 생성
     Monster* generateMonster(int level);
 
-    // 전투 수행
+    // 배틀 로직
     void battle(Character* player);
 
-    // 몬스터와 플레이어 상호작용
+    // 몬스터와 상호작용 로직 
     void handleMonsterInteraction(Monster* monster, Character* player);
 
-    // + 추가적인 요소들
+    // + 아래 추가적인 요소들
 
     // 플레이어의 인벤토리(아이템 리스트) 표시
     // 아이템 개수는 게임중 계속 바뀌므로 동적배열 Vector 사용

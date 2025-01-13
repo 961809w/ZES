@@ -23,10 +23,14 @@
     <ClCompile Include="GPT.cpp">
       <Filter>리소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="GameManager.h" />
   </ItemGroup>
 </Project>
