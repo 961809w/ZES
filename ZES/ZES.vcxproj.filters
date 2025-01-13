@@ -20,9 +20,6 @@
     <ClCompile Include="main.cpp">
       <Filter>메인 파일</Filter>
     </ClCompile>
-    <ClCompile Include="GPT.cpp">
-      <Filter>리소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>

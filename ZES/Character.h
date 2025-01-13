@@ -9,6 +9,8 @@ class Character
 {
 private:
 	static Character* instance;
+
+public:
 	string name;
 	int level;
 	int maxHealth;
@@ -17,12 +19,9 @@ private:
 	int gold;
 	vector<Item*> inventory;
 
-public:
-	Character(string name) : name(name)
-	{
-
-	}
-	static Character* getinstance(string name = "");
+	Character(string name);
+	
+	static Character* getInstance(string name = "");
 	void displayStats();
 	void levelUp();
 	void useItem(int index);
