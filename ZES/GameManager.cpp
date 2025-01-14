@@ -43,6 +43,36 @@ Monster* GameManager::generateMonster() {
 //배틀 로직
 void GameManager::battle(Character* player) {
 
+    Monster* monster = generateMonster();
+    cout << "몬스터 " << monster->getName() << " 등장! 전투 시작!" << endl;
+    bool isAlive = true;
+    while (isAlive)
+    {
+        monster->displayInfo();
+        cout << endl;
+
+        player->useItem();
+        monster->takeDamage(player->attack);
+        cout << "몬스터 " << monster->getName() << "에게 " << player->attack << "만큼의 데미지를 입혔습니다." << endl;
+		monster->displayInfo();
+        if (monster->getHealth() <= 0)
+        {
+            cout << "몬스터 " << monster->getName() << "를 물리쳤습니다!" << endl;
+            player->gainExperience(monster->getExperience());
+            player->levelUp();
+            player->gold += rand() % 100 + 50;
+            isAlive = false;
+        }
+        player->useItem();
+        monster->attackPlayer(*player);
+        cout << "플레이어 " << player->getName() << "가 " << monster->getAttack() << "만큼의 데미지를 입었습니다." << endl;
+        cout << "플레이어 " << player->getName() << "의 체력: " << player->getHealth() << ", 공격력: " << player->attack << endl;
+        if (player->getHealth() <= 0)
+        {
+            cout << "플레이어 " << player->getName() << "가 죽었습니다!" << endl;
+            isAlive = false;
+        }
+
 }
 
 
