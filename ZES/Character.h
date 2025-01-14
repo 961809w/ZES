@@ -14,13 +14,14 @@ public:
 	string name;
 	int level;
 	int maxHealth;
+	int currentHealth;
 	int attack;
 	int experience;
 	int gold;
 	vector<Item*> inventory;
 
 	Character(string name);
-	
+
 	static Character* getInstance(string name = "");
 	void displayStats();
 	void levelUp();
@@ -28,6 +29,8 @@ public:
 
 	string getName() const;
 	void gainExperience(int experience);
+	int getHealth();
+	void takeDamage(int damage);
 };
 
 #endif

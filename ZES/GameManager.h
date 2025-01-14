@@ -31,8 +31,13 @@ public:
     // ∞‘¿” ¡æ∑·
     void endGame();
 
+<<<<<<< Updated upstream
     // «√∑π¿ÃæÓ ªÛ≈¬ «•Ω√
     void displayPlayerStatus(Character* player);
+=======
+    // ÌîåÎ†àÏù¥Ïñ¥ ÏÉÅÌÉú ÌëúÏãú
+    //void displayPlayerStatus(Character* player);
+>>>>>>> Stashed changes
 
 
 private:

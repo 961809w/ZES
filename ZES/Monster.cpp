@@ -34,6 +34,7 @@ void Monster::takeDamage(int damage) {
 }
 
 void Monster::attackPlayer(Character& character) {
+<<<<<<< Updated upstream
 	character.takeDamage(attack);
 
 	cout << name << "°¡" << character.getName() << "°ø°ÝÇß½À´Ï´Ù." << attack << "µ¥¹ÌÁö" << endl;
@@ -45,6 +46,17 @@ void Monster::displayInfo() const {
 
 void Monster::grantexperienceToPlayer(Character& character) {
 	cout << name << " ¾²·¯Æ®·È´Ù " << character.getName() << " ¾ò¾ú½À´Ï´Ù. " << experience << " °æÇèÄ¡" << endl;
+=======
+	character.currentHealth -= attack;
+}
+
+void Monster::displayInfo() const {
+	cout << "ëª¬ìŠ¤í„°: " << name << ", ì²´ë ¥: " << health << ", ê³µê²©ë ¥: " << attack << endl;
+}
+
+void Monster::grantexperienceToPlayer(Character& character) {
+	cout << name << "ë¥¼ ì“°ëŸ¬íŠ¸ë ¸ë‹¤! " << character.name << "ëŠ” ì–»ì—ˆìŠµë‹ˆë‹¤. " << experience << " ê²½í—˜ì¹˜ íšë“" << endl;
+>>>>>>> Stashed changes
 	character.gainExperience(experience);
 }
 
@@ -66,8 +78,13 @@ unique_ptr<Item> Monster::dropitem() {
 		cout << "Æ÷¼ÇÀ» ÇÏ³ª¸¦ ¼Õ¿¡ ³Ö¾ú´Ù!" << endl;
 		return make_unique<HealthPotion>();
 	}
+<<<<<<< Updated upstream
 	if (chance < 30) && chance < 60){
 		cout << name << "¾îÅÃºÎ½ºÆ®¸¦ ¼Õ¿¡ ³Ö¾ú´Ù!" << endl;
+=======
+	if (chance > 30 && chance < 60){
+		cout << name << "ì–´íƒë¶€ìŠ¤íŠ¸ë¥¼ ì†ì— ë„£ì—ˆë‹¤!" << endl;
+>>>>>>> Stashed changes
 		return make_unique<AttackBoost>();
 	}
 
