@@ -22,9 +22,7 @@ using namespace std;
 	  }
   }
 
-  AttackBoost::AttackBoost()
-      : name("공격력 증가 아이템"),
-        attackIncrease(10)
+  AttackBoost::AttackBoost() : name("공격력 증가 아이템"), attackIncrease(10)
   {}
 
   string AttackBoost::getName() const

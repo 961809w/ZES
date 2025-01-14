@@ -1,3 +1,6 @@
+#ifndef GAMEMANAGER_H
+#define GAMEMANAGER_H
+
 #include "Character.h"
 #include "Monster.h"
 #include "item.h"
@@ -32,8 +35,6 @@ public:
     //void displayPlayerStatus(Character* player);
 
 
-private:
-    // 필요한 경우 추가적인 멤버 변수를 선언
 };
 
-#endif // GAMEMANAGER_H
+#endif
