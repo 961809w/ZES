@@ -34,7 +34,7 @@ public:
 	void takeDamage(int damage);
 	void attackPlayer(Character& character);
 	void grantexperienceToPlayer(Character& character);
-	unique_ptr<Item> dropitem();
+	Item* dropitem();
 
 	virtual void displayInfo() const;
 };
