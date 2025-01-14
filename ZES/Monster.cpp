@@ -55,8 +55,6 @@ unique_ptr<Item> Monster::dropitem() {
 	int experience = (rand() % 100) + 10;
 	cout << "처지 보상" << experience << "경험치" << endl;
 
-	Character.gainExperience(EXP);
-
 	int gold = (rand() % 100) + 1;
 	cout << "처지 보상" << gold << "골드" << endl;
 
