@@ -14,6 +14,7 @@ public:
 	string name;
 	int level;
 	int maxHealth;
+	int currentHealth;
 	int attack;
 	int experience;
 	int gold;
@@ -28,6 +29,8 @@ public:
 
 	string getName() const;
 	void gainExperience(int experience);
+	int getHealth();
+	void takeDamage(int damage);
 };
 
 #endif

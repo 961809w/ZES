@@ -81,3 +81,17 @@ void Character::gainExperience(int experience)
 	this->experience += experience;
 	levelUp();
 }
+
+int Character::getHealth()
+{
+	if (currentHealth > maxHealth)
+	{
+		currentHealth = maxHealth;
+	}
+	return currentHealth;
+}
+
+void Character::takeDamage(int damage) {
+	currentHealth -= damage;
+	if (currentHealth < 0) currentHealth = 0;
+}
