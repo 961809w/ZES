@@ -90,6 +90,7 @@ string Character::getName() const
 void Character::gainExperience(int experience)
 {
 	this->experience += experience;
+	cout << "You gained " << experience << " experience!" << endl;
 	levelUp();
 }
 
