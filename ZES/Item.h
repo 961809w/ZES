@@ -8,7 +8,8 @@
 
 using namespace std;
 
-class Item {
+class Item 
+{
 public:
  virtual string getName() const = 0;
  virtual void use(class Character* character) = 0;
@@ -16,7 +17,8 @@ public:
 };
 
 // 체력 회복 아이템
-class HealthPotion : public Item {
+class HealthPotion : public Item 
+{
 private:
     string name;
     int healthRestore;
@@ -28,7 +30,8 @@ public:
     };
 
 // 공격력 증가 아이템
-class AttackBoost : public Item {
+class AttackBoost : public Item 
+{
 private:
     string name;
     int attackIncrease;
