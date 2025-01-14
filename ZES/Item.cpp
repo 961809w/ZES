@@ -18,3 +18,8 @@ using namespace std;
 
     return name;
   }
+
+  void AttackBoost :: use(Character*character)
+  {
+    character->increaseAttack(attackIncrease);
+  }
