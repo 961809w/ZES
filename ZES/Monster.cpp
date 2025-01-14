@@ -33,7 +33,6 @@ void Monster::takeDamage(int damage) {
 	if (health < 0) health = 0;
 }
 
-//몬스터가 캐릭터를 공격하는 함수
 void Monster::attackPlayer(Character& character) {
 	character.maxHealth -= attack;
 
@@ -41,12 +40,12 @@ void Monster::attackPlayer(Character& character) {
 }
 
 void Monster::displayInfo() const {
-	cout << "몬스터: " << name << "체력: " << health << "공격: " << attack << endl;
+	cout << "몬스터 " << name << "체력 " << health << "공격 " << attack << endl;
 }
 
 void Monster::grantexperienceToPlayer(Character& character) {
-	cout << name << " 를 쓰러트렸다 " << character.name << "는 얻었습니다. " << experience << " 경험치 획득" << endl;
-	character.experience += experience;
+	cout << name << "를 쓰러트렸다 " << character.name << "는 얻었습니다. " << experience << " 경험치 획득" << endl;
+	character.gainExperience(experience);
 }
 
 //아이템 드랍 설정
@@ -107,7 +106,6 @@ watt8000K::watt8000K() : Monster("블루와트", 80, 18, 40) {
 watt10000K::watt10000K() : Monster("블루와트+", 100, 25, 45) {
 }
 
-//watt 15000K Boss class
+//watt 15000K class
 watt15000K::watt15000K() : Monster("레인보우와트", 300, 50, 150) {
 }
-
