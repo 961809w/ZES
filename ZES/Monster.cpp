@@ -64,7 +64,7 @@ unique_ptr<Item> Monster::dropitem() {
 		cout << "포션을 하나를 손에 넣었다!" << endl;
 		return make_unique<HealthPotion>();
 	}
-	if (chance < 30 && chance < 60){
+	if (chance > 30 && chance < 60){
 		cout << name << "어택부스트를 손에 넣었다!" << endl;
 		return make_unique<AttackBoost>();
 	}

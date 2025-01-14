@@ -5,6 +5,8 @@
 
 using namespace std;
 
+class Item;
+
 class Character
 {
 private:

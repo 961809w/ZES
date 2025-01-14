@@ -5,8 +5,11 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "Character.h"
 
 using namespace std;
+
+class Character;
 
 class Item 
 {
