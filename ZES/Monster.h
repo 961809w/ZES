@@ -29,9 +29,9 @@ public:
 	string getName() const;
 	int getHealth() const;
 	int getAttack() const;
-	int getExpperience() const;
+	int getExperience() const;
 
-	virtual void takeDamege(int damage);
+	virtual void takeDamage(int damage);
 	virtual void attackPlayer(Character& Character);
 	virtual void grantexperienceToPlayer(Character& Character);
 	unique_ptr<Item> dropitem();
