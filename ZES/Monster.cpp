@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//Monster class ±¸Çö
+//Monster class êµ¬í˜„
 Monster::Monster(const string& name, int health, int attack, int experience) : name(name), health(health), attack(attack), experience(experience) {}
 
 Monster::~Monster() {}
@@ -36,30 +36,30 @@ void Monster::takeDamage(int damage) {
 void Monster::attackPlayer(Character& character) {
 	character.maxHealth -= attack;
 
-	cout << name << "°¡" << character.name << "¸¦ °ø°ÝÇß½À´Ï´Ù." << attack << "µ¥¹ÌÁö" << endl;
+	cout << name << "ê°€" << character.name << "ë¥¼ ê³µê²©í–ˆìŠµë‹ˆë‹¤." << attack << "ë°ë¯¸ì§€" << endl;
 }
 
 void Monster::displayInfo() const {
-	cout << "¸ó½ºÅÍ " << name << "Ã¼·Â " << health << "°ø°Ý " << attack << endl;
+	cout << "ëª¬ìŠ¤í„° " << name << "ì²´ë ¥ " << health << "ê³µê²© " << attack << endl;
 }
 
 void Monster::grantexperienceToPlayer(Character& character) {
-	cout << name << "¸¦ ¾²·¯Æ®·È´Ù " << character.name << "´Â ¾ò¾ú½À´Ï´Ù. " << experience << " °æÇèÄ¡ È¹µæ" << endl;
+	cout << name << "ë¥¼ ì“°ëŸ¬íŠ¸ë ¸ë‹¤ " << character.name << "ëŠ” ì–»ì—ˆìŠµë‹ˆë‹¤. " << experience << " ê²½í—˜ì¹˜ íšë“" << endl;
 	character.gainExperience(experience);
 }
 
-//¾ÆÀÌÅÛ µå¶ø ¼³Á¤
+//ì•„ì´í…œ ë“œëž ì„¤ì •
 void Monster::dropitem(Character& character) {
 
 	int chance = rand() % 100;
 	Item* Drop = nullptr;
 
 	if (chance < 30) {
-		cout << "Æ÷¼ÇÀ» ÇÏ³ª¸¦ ¼Õ¿¡ ³Ö¾ú´Ù!" << endl;
+		cout << "í¬ì…˜ì„ í•˜ë‚˜ë¥¼ ì†ì— ë„£ì—ˆë‹¤!" << endl;
 		Drop = new HealthPotion();
 	}
 	if (chance < 30) {
-		cout << "¾îÅÃºÎ½ºÆ®¸¦ ¼Õ¿¡ ³Ö¾ú´Ù!" << endl;
+		cout << "ì–´íƒë¶€ìŠ¤íŠ¸ë¥¼ ì†ì— ë„£ì—ˆë‹¤!" << endl;
 		Drop = new AttackBoost();
 	}
 	if (Drop) {
@@ -69,39 +69,20 @@ void Monster::dropitem(Character& character) {
 }
 
 
+redwatt::redwatt() : Monster("ë ˆë“œì™€íŠ¸", 10, 5, 10) { }
 
-//watt 1500K class
-watt1500K::watt1500K() : Monster("·¹µå¿ÍÆ®", 10, 5, 10) {
-}
+redwattplus::redwattplus() : Monster("ë ˆë“œì™€íŠ¸+", 30, 6, 15) { }
 
-//watt 3000K class
-watt3000K::watt3000K() : Monster("·¹µå¿ÍÆ®+", 30, 6, 15) {
-}
+yellowwatt::yellowwatt() : Monster("ì˜ë¡œìš°ì™€íŠ¸", 50, 9, 20) { }
 
-//watt 4000K class
-watt4000K::watt4000K() : Monster("¿¤·Î¿ì¿ÍÆ®", 50, 9, 20) {
-}
+yellowwattplus::yellowwattplus() : Monster("ì˜ë¡œìš°ì™€íŠ¸+", 55, 10, 25) { }
 
-//watt 4500K class
-watt4500K::watt4500K() : Monster("¿¤·Î¿ì¿ÍÆ®+", 55, 10, 25) {
-}
+greenwatt::greenwatt() : Monster("ê·¸ë¦°ì™€íŠ¸", 60, 12, 30) { }
 
-//watt 5000K class
-watt5000K::watt5000K() : Monster("±×¸°¿ÍÆ®", 60, 12, 30) {
-}
+greenwattplus::greenwattplus() : Monster("ê·¸ë¦°ì™€íŠ¸+", 65, 14, 35) { }
 
-//watt 6000K class
-watt6000K::watt6000K() : Monster("±×¸°¿ÍÆ®+", 65, 14, 35) {
-}
+bluewatt::bluewatt() : Monster("ë¸”ë£¨ì™€íŠ¸", 80, 18, 40) { }
 
-//watt 8000K class
-watt8000K::watt8000K() : Monster("ºí·ç¿ÍÆ®", 80, 18, 40) {
-}
+bluewattplus::bluewattplus() : Monster("ë¸”ë£¨ì™€íŠ¸+", 100, 25, 45) { }
 
-//watt 10000K class
-watt10000K::watt10000K() : Monster("ºí·ç¿ÍÆ®+", 100, 25, 45) {
-}
-
-//Boss watt 15000K class
-watt15000K::watt15000K() : Monster("·¹ÀÎº¸¿ì¿ÍÆ®", 300, 50, 150) {
-}
+rainbowwatt::rainbowwatt() : Monster("ë ˆì¸ë³´ìš°ì™€íŠ¸", 300, 50, 150) { }
