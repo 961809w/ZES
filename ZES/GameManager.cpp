@@ -17,12 +17,6 @@ void GameManager::battle(Character* player) {
     cout << "Battle initiated with player: " << player->getName() << endl;
 }
 
-void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
-    // 몬스터와 상호작용 로직 
-    cout << "Handling interaction between player " << player->getName()
-        << " and monster " << monster->getName() << endl;
-}
-
 // + 추가적인 요소들
 void GameManager::displayInventory(const vector<Item*>& inventory) {
     // 인벤토리(아이템 리스트) 출력 로직
@@ -32,22 +26,28 @@ void GameManager::displayInventory(const vector<Item*>& inventory) {
     }
 }
 
-void GameManager::initializeGame() {
-    // 게임 초기화 로직
-    cout << "Initializing the game..." << endl;
-}
-
 void GameManager::endGame() {
     // 게임 종료 로직
     cout << "Ending the game..." << endl;
 }
 
-void GameManager::displayPlayerStatus(Character* player) {
-    // 플레이어 상태 표시 로직
-    cout << "Player Status: " << endl;
-    cout << "Name: " << player->getName() << endl;
-    cout << "Level: " << player->level << endl;
-    cout << "Health: " << player->health << "/" << player->maxHealth << endl;
-    cout << "Experience: " << player->experience << endl;
-    cout << "Gold: " << player->gold << endl;
-}
+//void GameManager::displayPlayerStatus(Character* player) {
+//    // 플레이어 상태 표시 로직
+//    cout << "Player Status: " << endl;
+//    cout << "Name: " << player->getName() << endl;
+//    cout << "Level: " << player->level << endl;
+//    cout << "Health: " << player->health << "/" << player->maxHealth << endl;
+//    cout << "Experience: " << player->experience << endl;
+//    cout << "Gold: " << player->gold << endl;
+//}
+
+//void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
+//    // 몬스터와 상호작용 로직 
+//    cout << "Handling interaction between player " << player->getName()
+//        << " and monster " << monster->getName() << endl;
+//}
+
+//void GameManager::initializeGame() {
+//    // 게임 초기화 로직
+//    cout << "Initializing the game..." << endl;
+//}

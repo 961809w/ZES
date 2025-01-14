@@ -34,28 +34,23 @@ int main() {
         switch (choice) {
         case 1:
             // 플레이어 상태 표시
-            gameManager.displayPlayerStatus(player);
-            break;
+            player->displayStats();
 
         case 2:
             // 인벤토리 표시
             gameManager.displayInventory(player->inventory);
-            break;
 
         case 3:
             // 몬스터와 전투
             gameManager.battle(player);
-            break;
 
         case 4:
             // 게임 종료
-            isRunning = false;
             gameManager.endGame();
             break;
 
         default:
             cout << "잘못된 입력입니다. 다시 선택하세요." << endl;
-            break;
         }
     }
 

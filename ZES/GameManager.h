@@ -15,7 +15,7 @@ public:
     void battle(Character* player);
 
     // 몬스터와 플레이어 상호작용
-    void handleMonsterInteraction(Monster* monster, Character* player);
+    //void handleMonsterInteraction(Monster* monster, Character* player);
 
     // + 추가적인 요소들
 
@@ -26,13 +26,13 @@ public:
 
 
     // 게임 초기화
-    void initializeGame();
+    //void initializeGame();
 
     // 게임 종료
     void endGame();
 
     // 플레이어 상태 표시
-    void displayPlayerStatus(Character* player);
+    //void displayPlayerStatus(Character* player);
 
 
 private:
