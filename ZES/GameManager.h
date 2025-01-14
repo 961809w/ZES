@@ -1,15 +1,12 @@
-#ifndef GAMEMANAGER_H
-#define GAMEMANAGER_H
-
 #include "Character.h"
 #include "Monster.h"
-#include "item. h"
+#include "item.h"
 #include <vector>
 
 class GameManager {
 public:
     // 몬스터 생성
-    Monster* generateMonster(int level);
+    Monster* generateMonster();
 
     // 배틀 로직
     void battle(Character* player);
@@ -40,5 +37,3 @@ private:
 };
 
 #endif // GAMEMANAGER_H
-
-
