@@ -49,8 +49,7 @@ void Monster::grantexperienceToPlayer(Character& character) {
 }
 
 //아이템 드랍 설정
-void Monster::dropitem() {
-	srand(static_cast<unsigned int>(time(nullptr)));
+void Monster::dropitem(Character& character) {
 
 	int chance = rand() % 100;
 	Item* Drop = nullptr;
@@ -103,6 +102,6 @@ watt8000K::watt8000K() : Monster("블루와트", 80, 18, 40) {
 watt10000K::watt10000K() : Monster("블루와트+", 100, 25, 45) {
 }
 
-//watt 15000K class
+//Boss watt 15000K class
 watt15000K::watt15000K() : Monster("레인보우와트", 300, 50, 150) {
 }
