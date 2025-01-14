@@ -12,7 +12,7 @@ public:
     void battle(Character* player);
 
     // 몬스터와 상호작용 로직 
-    void handleMonsterInteraction(Monster* monster, Character* player);
+    //void handleMonsterInteraction(Monster* monster, Character* player);
 
     // + 아래 추가적인 요소들
 
