@@ -33,7 +33,7 @@ void Character::displayStats()
 	cout << "=========================" << endl;
 	cout << "      이름 : " << name << endl;
 	cout << "      레벨 : " << level << endl;
-	cout << "      체력 : " << currentHealth << " / "<< maxHealth << endl;
+	cout << "      체력 : " << currentHealth << " / " << maxHealth << endl;
 	cout << "    공격력 : " << attack << endl;
 	cout << "    경험치 : " << experience << endl;
 	cout << "      골드 : " << gold << endl;

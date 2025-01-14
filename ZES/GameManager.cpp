@@ -84,11 +84,11 @@ void GameManager::displayInventory(const vector<Item*>&inventory) {
 }
 
 
-/*void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
-    // 몬스터와 상호작용 로직
-    cout << "플레이어 " << player->getName()
-        << " 와 몬스터 " << monster->getName() << " 전투 중" << endl;
-}*/
+    /*void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
+        // 몬스터와 상호작용 로직
+        cout << "플레이어 " << player->getName()
+            << " 와 몬스터 " << monster->getName() << " 전투 중" << endl;
+    }*/
 
 void GameManager::initializeGame() {
     // 게임 초기화 로직

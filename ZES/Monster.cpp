@@ -107,4 +107,3 @@ watt10000K::watt10000K() : Monster("블루와트+", 100, 25, 45) {
 //watt 15000K class
 watt15000K::watt15000K() : Monster("레인보우와트", 300, 50, 150) {
 }
-
