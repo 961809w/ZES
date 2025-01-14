@@ -29,6 +29,9 @@
     <ClCompile Include="main.cpp">
       <Filter>메인 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
