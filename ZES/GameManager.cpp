@@ -66,7 +66,7 @@ void GameManager::battle(Character* player) {
         player->useItem();
         monster->attackPlayer(*player);
         cout << "플레이어 " << player->getName() << "가 " << monster->getAttack() << "만큼의 데미지를 입었습니다." << endl;
-        cout << "플레이어 " << player->getName() << "의 체력: " << player->getHealth() << endl;
+        cout << "플레이어 " << player->getName() << "의 체력: " << player->getHealth() << ", 공격력: " << player->attack << endl;
         if (player->getHealth() <= 0)
         {
             cout << "플레이어 " << player->getName() << "가 죽었습니다!" << endl;
