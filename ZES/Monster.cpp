@@ -37,7 +37,7 @@ void Monster::takeDamage(int damage) {
 void Monster::attackPlayer(Character& character) {
 	character.maxHealth -= attack;
 
-	cout << name << "이(가)" << character.name << "를 공격했습니다." << attack << "데미지" << endl;
+	cout << name << "가" << character.name << "를 공격했습니다." << attack << "데미지" << endl;
 }
 
 void Monster::displayInfo() const {
@@ -45,7 +45,7 @@ void Monster::displayInfo() const {
 }
 
 void Monster::grantexperienceToPlayer(Character& character) {
-	cout << name << " 를 쓰러트렸다 " << character.name << " 얻었습니다. " << experience << " 경험치 획득" << endl;
+	cout << name << " 를 쓰러트렸다 " << character.name << "는 얻었습니다. " << experience << " 경험치 획득" << endl;
 	character.experience += experience;
 }
 
@@ -76,38 +76,38 @@ unique_ptr<Item> Monster::dropitem() {
 
 
 //watt 1500K class
-watt1500K::watt1500K() : Monster("와트레드", 10, 5, 10) {
+watt1500K::watt1500K() : Monster("레드와트", 10, 5, 10) {
 }
 
 //watt 3000K class
-watt3000K::watt3000K() : Monster("와트레드+", 30, 6, 15) {
+watt3000K::watt3000K() : Monster("레드와트+", 30, 6, 15) {
 }
 
 //watt 4000K class
-watt4000K::watt4000K() : Monster("와트엘로우", 50, 9, 20) {
+watt4000K::watt4000K() : Monster("엘로우와트", 50, 9, 20) {
 }
 
 //watt 4500K class
-watt4500K::watt4500K() : Monster("와트엘로우+", 55, 10, 25) {
+watt4500K::watt4500K() : Monster("엘로우와트+", 55, 10, 25) {
 }
 
 //watt 5000K class
-watt5000K::watt5000K() : Monster("와트그린", 60, 12, 30) {
+watt5000K::watt5000K() : Monster("그린와트", 60, 12, 30) {
 }
 
 //watt 6000K class
-watt6000K::watt6000K() : Monster("와트그린+", 65, 14, 35) {
+watt6000K::watt6000K() : Monster("그린와트+", 65, 14, 35) {
 }
 
 //watt 8000K class
-watt8000K::watt8000K() : Monster("와트블루", 80, 18, 40) {
+watt8000K::watt8000K() : Monster("블루와트", 80, 18, 40) {
 }
 
 //watt 10000K class
-watt10000K::watt10000K() : Monster("와트블루+", 100, 25, 45) {
+watt10000K::watt10000K() : Monster("블루와트+", 100, 25, 45) {
 }
 
-//watt 15000K class
+//watt 15000K Boss class
 watt15000K::watt15000K() : Monster("레인보우와트", 300, 50, 150) {
 }
 
