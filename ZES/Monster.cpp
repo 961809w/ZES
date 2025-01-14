@@ -34,7 +34,7 @@ void Monster::takeDamage(int damage) {
 }
 
 void Monster::attackPlayer(Character& character) {
-	character.maxHealth -= attack;
+	character.currentHealth -= attack;
 
 	cout << name << "가" << character.name << "를 공격했습니다." << attack << "데미지" << endl;
 }
