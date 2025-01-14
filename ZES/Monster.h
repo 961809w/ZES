@@ -40,62 +40,50 @@ public:
 };
 
 
-//watt 1500K class
-class watt1500K : public Monster {
+class redwatt : public Monster {
 public:
-	watt1500K();
+	redwatt();
 };
 
-
-//watt 3000K class
-class watt3000K : public Monster {
+class redwattplus : public Monster {
 public:
-	watt3000K();
+	redwattplus();
 };
 
-
-//watt 4000K class
-class watt4000K : public Monster {
+class yellowwatt : public Monster {
 public:
-	watt4000K();
+	yellowwatt();
 };
 
-//watt 4500K class
-class watt4500K : public Monster {
+class yellowwattplus : public Monster {
 public:
-	watt4500K();
+	yellowwattplus();
 };
 
-//watt 5000K class
-class watt5000K : public Monster {
+class greenwatt : public Monster {
 public:
-	watt5000K();
+	greenwatt();
 };
 
-//watt 6000K class
-class watt6000K : public Monster {
+class greenwattplus : public Monster {
 public:
-	watt6000K();
+	greenwattplus();
 };
 
-//watt 8000K class
-class watt8000K : public Monster {
+class bluewatt : public Monster {
 public:
-	watt8000K();
+	bluewatt();
 };
 
-//watt 10000K class
-class watt10000K : public Monster {
+class bluewattplus : public Monster {
 public:
-	watt10000K();
+	bluewattplus();
 };
 
-//watt 15000K class
-class watt15000K : public Monster {
+class rainbowwatt : public Monster {
 public:
-	watt15000K();
+	rainbowwatt();
 };
-
 
 
 #endif
