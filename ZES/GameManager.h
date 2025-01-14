@@ -1,6 +1,3 @@
-#ifndef GAMEMANAGER_H
-#define GAMEMANAGER_H
-
 #include "Character.h"
 #include "Monster.h"
 #include "item.h"
@@ -8,42 +5,35 @@
 
 class GameManager {
 public:
-    // ¸ó½ºÅÍ »ı¼º
-    Monster* generateMonster(int level);
+    // ëª¬ìŠ¤í„° ìƒì„±
+    Monster* generateMonster();
 
-    // ÀüÅõ ¼öÇà
+    // ë°°í‹€ ë¡œì§
     void battle(Character* player);
 
-    // ¸ó½ºÅÍ¿Í ÇÃ·¹ÀÌ¾î »óÈ£ÀÛ¿ë
+    // ëª¬ìŠ¤í„°ì™€ ìƒí˜¸ì‘ìš© ë¡œì§ 
     void handleMonsterInteraction(Monster* monster, Character* player);
 
-    // + Ãß°¡ÀûÀÎ ¿ä¼Òµé
+    // + ì•„ë˜ ì¶”ê°€ì ì¸ ìš”ì†Œë“¤
 
-    // ÇÃ·¹ÀÌ¾îÀÇ ÀÎº¥Åä¸®(¾ÆÀÌÅÛ ¸®½ºÆ®) Ç¥½Ã
-    // ¾ÆÀÌÅÛ °³¼ö´Â °ÔÀÓÁß °è¼Ó ¹Ù²î¹Ç·Î µ¿Àû¹è¿­ Vector »ç¿ë
-    // const´Â ÀÎº¥Åä¸® ¸®½ºÆ®ÀÇ ¿øº»À» ¼öÁ¤ÇÏÁö ¸øÇÏµµ·Ï º¸Á¤
+    // í”Œë ˆì´ì–´ì˜ ì¸ë²¤í† ë¦¬(ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸) í‘œì‹œ
+    // ì•„ì´í…œ ê°œìˆ˜ëŠ” ê²Œì„ì¤‘ ê³„ì† ë°”ë€Œë¯€ë¡œ ë™ì ë°°ì—´ Vector ì‚¬ìš©
+    // constëŠ” ì¸ë²¤í† ë¦¬ ë¦¬ìŠ¤íŠ¸ì˜ ì›ë³¸ì„ ìˆ˜ì •í•˜ì§€ ëª»í•˜ë„ë¡ ë³´ì •
     void displayInventory(const vector<Item*>& inventory);
 
 
-    // °ÔÀÓ ÃÊ±âÈ­
+    // ê²Œì„ ì´ˆê¸°í™”
     void initializeGame();
 
-    // °ÔÀÓ Á¾·á
+    // ê²Œì„ ì¢…ë£Œ
     void endGame();
 
-<<<<<<< Updated upstream
-    // ÇÃ·¹ÀÌ¾î »óÅÂ Ç¥½Ã
-    void displayPlayerStatus(Character* player);
-=======
     // í”Œë ˆì´ì–´ ìƒíƒœ í‘œì‹œ
-    //void displayPlayerStatus(Character* player);
->>>>>>> Stashed changes
+    void displayPlayerStatus(Character* player);
 
 
 private:
-    // ÇÊ¿äÇÑ °æ¿ì Ãß°¡ÀûÀÎ ¸â¹ö º¯¼ö¸¦ ¼±¾ğ
+    // í•„ìš”í•œ ê²½ìš° ì¶”ê°€ì ì¸ ë©¤ë²„ ë³€ìˆ˜ë¥¼ ì„ ì–¸
 };
 
 #endif // GAMEMANAGER_H
-
-

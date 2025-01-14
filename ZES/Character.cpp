@@ -10,11 +10,9 @@ Character::Character(string name)
 	: name(name),
 	level(1),
 	maxHealth(100),
-	currentHealth(100),
 	attack(10),
 	experience(0),
-	gold(0) {
-}
+	gold(0){ }
 
 
 Character* Character::getInstance(string name)
@@ -33,7 +31,7 @@ void Character::displayStats()
 	cout << "=========================" << endl;
 	cout << "      이름 : " << name << endl;
 	cout << "      레벨 : " << level << endl;
-	cout << "      체력 : " << currentHealth << " / "<< maxHealth << endl;
+	cout << "      체력 : " << maxHealth << endl;
 	cout << "    공격력 : " << attack << endl;
 	cout << "    경험치 : " << experience << endl;
 	cout << "      골드 : " << gold << endl;
@@ -82,18 +80,4 @@ void Character::gainExperience(int experience)
 {
 	this->experience += experience;
 	levelUp();
-}
-
-int Character::getHealth()
-{
-	if (currentHealth > maxHealth)
-	{
-		currentHealth = maxHealth;
-	}
-	return currentHealth;
-}
-
-void Character::takeDamage(int damage) {
-	currentHealth -= damage;
-	if (currentHealth < 0) currentHealth = 0;
 }
