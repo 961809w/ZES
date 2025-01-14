@@ -1,47 +1,28 @@
-#ifndef ITEM_H_
-#define ITEM_H_
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include "Item.h"
 
 using namespace std;
 
-class Item 
-{
-public:
- virtual string getName() const = 0;
- virtual void use(class Character* character) = 0;
- virtual ~Item() = default;
-};
+  HealthPotion() : name("체력 회복 포션"), healthRestore(healthRestore){}
+  string HealthPotionm::getName() const
+  {
 
-// 체력 회복 아이템
-class HealthPotion : public Item 
-{
-private:
-    string name;
-    int healthRestore;
+    return name;
+  }
 
-public:
-    HealthPotion(int healthRestore);
-    string getName() const override;
-    void use(Character* character) override;
-    };
+  void HealthPotion::use(Character* character)
+  {
 
-// 공격력 증가 아이템
-class AttackBoost : public Item 
-{
-private:
-    string name;
-    int attackIncrease;
+    character->currentHealth +=50;
+  }
 
-public:
-    AttackBoost(int attackIncrease);
-    string getName() const override;
-    void use(Character* character) override;
-};
+  AttackBoost() : name("공격력 증가 아이템"), attackIncrease(attackIncrease){}
+  string AttackBoost ::getName() const
+  {
 
+    return name;
+  }
 
-
-#endif
+  void AttackBoost :: use(Character*character)
+  {
+    character->attack +=10
+  }
