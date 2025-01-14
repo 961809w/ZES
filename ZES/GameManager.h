@@ -29,7 +29,7 @@ public:
     void endGame();
 
     // 플레이어 상태 표시
-    void displayPlayerStatus(Character* player);
+    //void displayPlayerStatus(Character* player);
 
 
 private:

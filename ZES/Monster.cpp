@@ -34,17 +34,15 @@ void Monster::takeDamage(int damage) {
 }
 
 void Monster::attackPlayer(Character& character) {
-	character.maxHealth -= attack;
-
-	cout << name << "가" << character.name << "를 공격했습니다." << attack << "데미지" << endl;
+	character.currentHealth -= attack;
 }
 
 void Monster::displayInfo() const {
-	cout << "몬스터 " << name << "체력 " << health << "공격 " << attack << endl;
+	cout << "몬스터: " << name << ", 체력: " << health << ", 공격력: " << attack << endl;
 }
 
 void Monster::grantexperienceToPlayer(Character& character) {
-	cout << name << "를 쓰러트렸다 " << character.name << "는 얻었습니다. " << experience << " 경험치 획득" << endl;
+	cout << name << "를 쓰러트렸다! " << character.name << "는 얻었습니다. " << experience << " 경험치 획득" << endl;
 	character.gainExperience(experience);
 }
 
@@ -64,7 +62,7 @@ unique_ptr<Item> Monster::dropitem() {
 		cout << "포션을 하나를 손에 넣었다!" << endl;
 		return make_unique<HealthPotion>();
 	}
-	if (chance < 30 && chance < 60){
+	if (chance > 30 && chance < 60){
 		cout << name << "어택부스트를 손에 넣었다!" << endl;
 		return make_unique<AttackBoost>();
 	}
