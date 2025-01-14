@@ -10,9 +10,11 @@ Character::Character(string name)
 	: name(name),
 	level(1),
 	maxHealth(100),
+	currentHealth(100),
 	attack(10),
 	experience(0),
-	gold(0){ }
+	gold(0){
+}
 
 
 Character* Character::getInstance(string name)
