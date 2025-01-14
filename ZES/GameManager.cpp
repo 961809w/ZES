@@ -71,7 +71,9 @@ void GameManager::battle(Character* player){
             monster->dropitem(*player);
             player->gainExperience(monster->getExperience());
             player->levelUp();
-            player->gold += rand() % 100 + 50;
+			int goldgain = rand() % 100 + 50;
+			cout << "You got " << goldgain << " gold!" << endl;
+            player->gold += goldgain;
             isAlive = false;
             break;
         }
