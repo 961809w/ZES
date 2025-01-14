@@ -42,12 +42,18 @@ void GameManager::endGame() {
     cout << "Ending the game..." << endl;
 }
 
-void GameManager::displayPlayerStatus(Character* player) {
-    // 플레이어 상태 표시 로직
-    cout << "Player Status: " << endl;
-    cout << "Name: " << player->getName() << endl;
-    cout << "Level: " << player->level << endl;
-    cout << "Health: " << player->health << "/" << player->maxHealth << endl;
-    cout << "Experience: " << player->experience << endl;
-    cout << "Gold: " << player->gold << endl;
-}
+//void GameManager::displayPlayerStatus(Character* player) {
+//    // 플레이어 상태 표시 로직
+//    cout << "Player Status: " << endl;
+//    cout << "Name: " << player->getName() << endl;
+//    cout << "Level: " << player->level << endl;
+//    cout << "Health: " << player->health << "/" << player->maxHealth << endl;
+//    cout << "Experience: " << player->experience << endl;
+//    cout << "Gold: " << player->gold << endl;
+//}
+
+//void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
+//    // 몬스터와 상호작용 로직 
+//    cout << "Handling interaction between player " << player->getName()
+//        << " and monster " << monster->getName() << endl;
+//}
