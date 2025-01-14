@@ -20,14 +20,11 @@ public:
     }
 
     // 상점에서 판매하는 아이템 목록 출력
-	// items.size()는 items 벡터의 크기, 즉 상점에 판매하는 아이템의 개수를 반환. 현재 판매 개수 2개 이므로 size()는 2.
-    // getName()은 각 아이템의 이름을 반환하는 메서드
     void Shop::displayItems() {
         cout << "상점에서 판매하는 아이템 목록:" << endl;
-		for (int i = 0; i < items.size(); i++) // i는 아이템의 인덱스를 나타내며, 0부터 시작하여 items.size() 보다 작은값까지 반복. 현재 size는 2이므로 0, 1번째 아이템 출력.
-        {
-            cout << i << ". " << items[i]->getName()  // i 번째 아이템 이름 출력
-                << " (가격: " << prices[i] << " 골드)"  // i 번째 아이템 가격 출력
+        for (int i = 0; i < items.size(); i++) {
+            cout << i << ". " << items[i]->getName()  // 아이템 이름
+                << " (가격: " << prices[i] << " 골드)"  // 아이템 가격
                 << endl;
         }
     }
@@ -38,9 +35,14 @@ public:
             int price = prices[index];
             if (player->gold >= price) {
                 player->gold -= price;
-                cout << items[index]->getName() << " 아이템을 구매했습니다." << endl;
+                cout << items[index]->getName() << " 아이템을 상점에서 구매했습니다." << endl;
                 cout << "남은 골드: " << player->gold << endl;
-                items[index]->use(player);  // 아이템 사용
+
+                // 아이템을 캐릭터 인벤토리 벡터에 'push_back()'으로 추가 - push_back()은 벡터의 끝에 요소를 추가하는 함수
+                player->inventory.push_back(items[index]);
+
+                // 아이템 사용
+                items[index]->use(player);
             }
             else {
                 cout << "골드가 부족합니다. 구매할 수 없습니다." << endl;
@@ -51,7 +53,6 @@ public:
         }
     }
 
-    
     void Shop::sellItem(int index, Character* player) {
         if (index >= 0 && index < player->inventory.size()) {
             int price = prices[index] / 2;  // 판매 금액은 원래 가격의 절반
@@ -60,9 +61,11 @@ public:
             cout << "판매 금액: " << price << " 골드" << endl;
             cout << "현재 골드: " << player->gold << endl;
 
-            // 판매한 아이템 제거
-            delete  player->inventory[index];
+            // 판매한 아이템 삭제
+            delete player->inventory[index];
             player->inventory.erase(player->inventory.begin() + index);
+
+            // 상점의 가격 정보도 삭제
             prices.erase(prices.begin() + index);
         }
         else {

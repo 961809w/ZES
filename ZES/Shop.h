@@ -3,24 +3,25 @@
 
 #include <vector>
 #include "Item.h"
+#include "Character.h"
 
 class Shop {
 public:
-    // 생성자
+    // 상점의 아이템 목록과 가격 목록
+    std::vector<Item*> items;
+    std::vector<int> prices;
+
+    // 상점 생성자: 아이템과 가격을 설정
     Shop();
 
-    // 아이템 목록 출력
+    // 상점에서 판매하는 아이템 목록을 출력
     void displayItems();
 
-    // 아이템 구매
+    // 상점에서 아이템을 구매하는 함수
     void buyItem(int index, Character* player);
 
-    // 아이템 판매
+    // 상점에서 아이템을 판매하는 함수
     void sellItem(int index, Character* player);
-
-private:
-    std::vector<Item*> items;   // 상점에서 판매하는 아이템들
-    std::vector<int> prices;    // 아이템들의 가격
 };
 
-#endif // SHOP_H. 헤더 파일 보호
+#endif // SHOP_H
