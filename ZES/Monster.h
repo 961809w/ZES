@@ -13,77 +13,74 @@
 
 using namespace std;
 
-
 //moster class
 class Monster {
 protected:
-	string name;
-	int health;
-	int attack;
-	int experience;
+    string name;
+    int health;
+    int attack;
+    int experience;
 
 public:
-	Monster();
-	Monster(const string& name, int health, int attack, int experience);
-	virtual ~Monster();
+    Monster();
+    Monster(const string& name, int health, int attack, int experience);
+    virtual ~Monster();
 
-	string getName() const;
-	int getHealth() const;
-	int getAttack() const;
-	int getExperience() const;
+    string getName() const;
+    int getHealth() const;
+    int getAttack() const;
+    int getExperience() const;
 
-	virtual void takeDamage(int damage);
-	virtual void attackPlayer(Character& Character);
-	virtual void grantexperienceToPlayer(Character& Character);
-	unique_ptr<Item> dropitem();
+    virtual void takeDamage(int damage);
+    virtual void attackPlayer(Character& Character);
+    virtual void dropitem(Character& character);
 
-	virtual void displayInfo() const;
+    virtual void displayInfo() const;
 };
-
 
 class redwatt : public Monster {
 public:
-	redwatt();
+    redwatt();
 };
 
 class redwattplus : public Monster {
 public:
-	redwattplus();
+    redwattplus();
 };
 
 class yellowwatt : public Monster {
 public:
-	yellowwatt();
+    yellowwatt();
 };
 
 class yellowwattplus : public Monster {
 public:
-	yellowwattplus();
+    yellowwattplus();
 };
 
 class greenwatt : public Monster {
 public:
-	greenwatt();
+    greenwatt();
 };
 
 class greenwattplus : public Monster {
 public:
-	greenwattplus();
+    greenwattplus();
 };
 
 class bluewatt : public Monster {
 public:
-	bluewatt();
+    bluewatt();
 };
 
 class bluewattplus : public Monster {
 public:
-	bluewattplus();
+    bluewattplus();
 };
 
 class rainbowwatt : public Monster {
 public:
-	rainbowwatt();
+    rainbowwatt();
 };
 
 #endif

@@ -3,15 +3,18 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <ctime>
 
 using namespace std;
+
+Character* Character::instance = nullptr;
 
 Character::Character(string name)
 	: name(name),
 	level(1),
-	maxHealth(100),
-	currentHealth(100),
-	attack(10),
+	maxHealth(300),
+	currentHealth(300),
+	attack(20),
 	experience(0),
 	gold(0){
 }
@@ -31,12 +34,12 @@ void Character::displayStats()
 	cout << endl;
 	cout << "=========================" << endl;
 	cout << "=========================" << endl;
-	cout << "      이름 : " << name << endl;
-	cout << "      레벨 : " << level << endl;
-	cout << "      체력 : " << maxHealth << endl;
-	cout << "    공격력 : " << attack << endl;
-	cout << "    경험치 : " << experience << endl;
-	cout << "      골드 : " << gold << endl;
+	cout << "    Name : " << name << endl;
+	cout << "   Level : " << level << endl;
+	cout << "      HP : " << currentHealth << " / " << maxHealth << endl;
+	cout << "      AD : " << attack << endl;
+	cout << "     EXP : " << experience << endl;
+	cout << "    Gold : " << gold << endl;
 	cout << "=========================" << endl;
 	cout << "=========================" << endl;
 	cout << endl;
@@ -48,10 +51,11 @@ void Character::levelUp()
 	{
 		level++;
 		maxHealth = maxHealth + level * 20;
+		currentHealth = maxHealth;
 		attack = attack + level * 5;
 		experience -= 100;
 
-		cout << "레벨 업!! " << level - 1 << " -> " << level << endl;
+		cout << "Level Up!! " << level - 1 << " -> " << level << endl;
 		cout << endl;
 	}
 }
@@ -63,14 +67,19 @@ void Character::useItem()
 		return;
 	}
 	srand(time(nullptr));
+	int ItemUsePercentage = rand() % 100 + 1;
 	int randindex = rand() % inventory.size();
-	Item* Nth_Item = inventory[randindex];
+	if (ItemUsePercentage < 20)
+	{
+		Item* Nth_Item = inventory[randindex];
 
-	Nth_Item->use(this);
-	cout << "아이템 사용!" << endl;
-	cout << endl;
-	delete Nth_Item;
-	inventory.erase(inventory.begin() + randindex);
+		Nth_Item->use(this);
+		cout << "Item Used!" << endl << endl;
+
+		inventory.erase(inventory.begin() + randindex);
+
+		delete Nth_Item;
+	}
 }
 
 string Character::getName() const
@@ -86,10 +95,6 @@ void Character::gainExperience(int experience)
 
 int Character::getHealth()
 {
-	if (currentHealth > maxHealth)
-	{
-		currentHealth = maxHealth;
-	}
 	return currentHealth;
 }
 

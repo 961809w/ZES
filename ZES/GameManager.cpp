@@ -13,7 +13,7 @@ using namespace std;
 Monster* GameManager::generateMonster() {
     srand(static_cast<unsigned int>(time(nullptr))); // 난수 시드 설정 (몬스터 랜덤 생성을 위해)
     int level = rand() % 30 + 1; // 1~30 사이의 레벨 랜덤 생성
-    cout << level << " 레벨의 몬스터를 생성합니다." << endl;
+    cout << "Create a level "<< level << " monster." << endl;
 
     if (level <= 5) {
         return new redwatt();
@@ -34,7 +34,7 @@ Monster* GameManager::generateMonster() {
         return new bluewattplus();
     }
     else {
-        cout << "보스 몬스터 등장!" << endl;
+        cout << "Boss Monster is here!" << endl;
         return new rainbowwatt();
     }
 }
@@ -44,7 +44,7 @@ Monster* GameManager::generateMonster() {
 void GameManager::battle(Character* player){
 
     Monster* monster = generateMonster();
-    cout << "몬스터 " << monster->getName() << " 등장! 전투 시작!" << endl;
+    cout << "Monster " << monster->getName() << " is here! Battle begins!" << endl;
     bool isAlive = true;
     while (isAlive)
     {
@@ -53,11 +53,13 @@ void GameManager::battle(Character* player){
 
         player->useItem();
         monster->takeDamage(player->attack);
-        cout << "몬스터 " << monster->getName() << "에게 " << player->attack << "만큼의 데미지를 입혔습니다." << endl;
+        cout << "You gave " << monster->getName() << " " << player->attack << " damage." << endl;
         monster->displayInfo();
         if (monster->getHealth() <= 0)
         {
-            cout << "몬스터 " << monster->getName() << "를 물리쳤습니다!" << endl;
+            cout << "You've killed " << monster->getName() << "!!" << endl;
+            cout << endl;
+            monster->dropitem(*player);
             player->gainExperience(monster->getExperience());
             player->levelUp();
             player->gold += rand() % 100 + 50;
@@ -65,38 +67,37 @@ void GameManager::battle(Character* player){
         }
         player->useItem();
         monster->attackPlayer(*player);
-        cout << "플레이어 " << player->getName() << "가 " << monster->getAttack() << "만큼의 데미지를 입었습니다." << endl;
-        cout << "플레이어 " << player->getName() << "의 체력: " << player->getHealth() << ", 공격력: " << player->attack << endl;
+        cout << "Player " << player->getName() << "'s current HP: " << player->getHealth() << ", AD: " << player->attack << endl;
         if (player->getHealth() <= 0)
         {
-            cout << "플레이어 " << player->getName() << "가 죽었습니다!" << endl;
+            cout << "Player " << player->getName() << " is dead" << endl;
             isAlive = false;
+        }
+    }
+	delete monster;
+}
+
+void GameManager::displayInventory(const vector<Item*>& inventory) {
+    // 인벤토리(아이템 리스트) 출력 로직
+	if (inventory.empty()) {
+		cout << "Inventory is empty." << endl;
+		return;
+    }
+    else
+    {
+        cout << "Inventory List :" << endl;
+        for (const auto& item : inventory) {
+            cout << " - " << item->getName() << endl; // 아이템 이름 출력
         }
     }
 }
 
-
-void GameManager::displayInventory(const vector<Item*>& inventory) {
-    // 인벤토리(아이템 리스트) 출력 로직
-    cout << "인벤토리 :" << endl;
-    for (const auto& item : inventory) {
-        cout << " - " << item->getName() << endl; // 아이템 이름 출력
-    }
-}
-
-
-/*void GameManager::handleMonsterInteraction(Monster* monster, Character* player) {
-    // 몬스터와 상호작용 로직
-    cout << "플레이어 " << player->getName()
-        << " 와 몬스터 " << monster->getName() << " 전투 중" << endl;
-}*/
-
 void GameManager::initializeGame() {
     // 게임 초기화 로직
-    cout << "게임 초기화..." << endl;
+    cout << "Game Initializing..." << endl;
 }
 
 void GameManager::endGame() {
     // 게임 종료 로직
-    cout << "게임 종료..." << endl;
+    cout << "The End..." << endl;
 }

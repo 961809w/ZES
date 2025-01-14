@@ -14,12 +14,12 @@ int main() {
     gameManager.initializeGame();
 
     // 플레이어 생성 (Singleton)
-    cout << "플레이어 이름을 입력하세요: ";
+    cout << "Please enter a player name: ";
     string playerName;
     cin >> playerName;
     Character* player = Character::getInstance(playerName);
 
-    cout << "게임이 시작됩니다!" << endl;
+    cout << "The game begins!" << endl;
 
     bool isRunning = true;
 
@@ -27,35 +27,35 @@ int main() {
 
         if (player->level == 10)
         {
-			cout << "축하합니다! 당신은 최고 레벨에 도달했습니다!" << endl;
+			cout << "Congratulations! You've reached the highest level!" << endl;
 			isRunning = false;
 			break;
         }
 
         cout << "\n=========================" << endl;
-        cout << "1. 플레이어 상태 보기" << endl;
-        cout << "2. 인벤토리 보기" << endl;
-        cout << "3. 전투 시작" << endl;
-        cout << "4. 게임 종료" << endl;
+        cout << "1. View Player Status" << endl;
+        cout << "2. View Inventory" << endl;
+        cout << "3. Start a battle" << endl;
+        cout << "4. End the game" << endl;
         cout << "=========================" << endl;
 
         int choice;
-        cout << "선택: ";
+        cout << "Choose: ";
         cin >> choice;
 
         switch (choice) {
         case 1:
             // 플레이어 상태 표시
             player->displayStats();
-
+            break;
         case 2:
             // 인벤토리 표시
             gameManager.displayInventory(player->inventory);
-
+            break;
         case 3:
             // 몬스터와 전투
             gameManager.battle(player);
-
+            break;
         case 4:
             // 게임 종료
             gameManager.endGame();
@@ -63,8 +63,13 @@ int main() {
             break;
 
         default:
-            cout << "잘못된 입력입니다. 다시 선택하세요." << endl;
+            cout << "Invalid input, please re-select." << endl;
         }
+		if (player->currentHealth <= 0)
+		{
+			cout << "You are dead. Game Over." << endl;
+			isRunning = false;
+		}
     }
 
     return 0;

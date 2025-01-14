@@ -3,7 +3,7 @@
 using namespace std;
 
   HealthPotion::HealthPotion()
-      : name("체력 회복 포션"),
+      : name("HP potion"),
         healthRestore(50)
   {}
   
@@ -15,14 +15,16 @@ using namespace std;
   void HealthPotion::use(Character* character)
   {
       character->currentHealth +=healthRestore;
-	  cout << "체력이 " << healthRestore << "만큼 회복되었습니다." << endl;
+	  cout << "Current Health has been restored by " << healthRestore << endl;
 	  if (character->currentHealth > character->maxHealth)
 	  {
 		  character->currentHealth = character->maxHealth;
 	  }
   }
 
-  AttackBoost::AttackBoost() : name("공격력 증가 아이템"), attackIncrease(10)
+  AttackBoost::AttackBoost()
+	  : name("AD potion"),
+		attackIncrease(10)
   {}
 
   string AttackBoost::getName() const
@@ -30,8 +32,8 @@ using namespace std;
       return name;
   }
 
-  void AttackBoost :: use(Character* character)
+  void AttackBoost::use(Character* character)
   {
 	  character->attack += attackIncrease;
-	  cout << "공격력이 " << attackIncrease << "만큼 증가했습니다." << endl;
+	  cout << "The attack power has been increased by " << attackIncrease << endl;
   }

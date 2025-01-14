@@ -14,14 +14,7 @@ public:
     // 배틀 로직
     void battle(Character* player);
 
-    // 몬스터와 상호작용 로직 
-    //void handleMonsterInteraction(Monster* monster, Character* player);
-
-    // + 아래 추가적인 요소들
-
     // 플레이어의 인벤토리(아이템 리스트) 표시
-    // 아이템 개수는 게임중 계속 바뀌므로 동적배열 Vector 사용
-    // const는 인벤토리 리스트의 원본을 수정하지 못하도록 보정
     void displayInventory(const vector<Item*>& inventory);
 
 
