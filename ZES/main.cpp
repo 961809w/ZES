@@ -1,4 +1,8 @@
 #include "GameManager.h"
+#include "Character.h"
+#include "Monster.h"
+#include "item.h"
+#include <vector>
 #include <iostream>
 
 using namespace std;
@@ -20,6 +24,14 @@ int main() {
     bool isRunning = true;
 
     while (isRunning) {
+
+        if (player->level == 10)
+        {
+			cout << "축하합니다! 당신은 최고 레벨에 도달했습니다!" << endl;
+			isRunning = false;
+			break;
+        }
+
         cout << "\n=========================" << endl;
         cout << "1. 플레이어 상태 보기" << endl;
         cout << "2. 인벤토리 보기" << endl;
@@ -47,6 +59,7 @@ int main() {
         case 4:
             // 게임 종료
             gameManager.endGame();
+            isRunning = false;
             break;
 
         default:

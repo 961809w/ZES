@@ -57,3 +57,4 @@ void GameManager::endGame() {
 //    cout << "Handling interaction between player " << player->getName()
 //        << " and monster " << monster->getName() << endl;
 //}
+
