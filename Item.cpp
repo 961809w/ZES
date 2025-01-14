@@ -24,5 +24,5 @@ using namespace std;
 
   void AttackBoost :: use(Character*character)
   {
-    character->attack +=10
+    character->attack +=10;
   }
