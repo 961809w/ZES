@@ -27,6 +27,7 @@ public:
     // 플레이어 상태 표시
     //void displayPlayerStatus(Character* player);
 
+    void displayStatus(const string& name, int hp, int attackValue);
 
 };
 

@@ -31,8 +31,6 @@ void Monster::takeDamage(int damage) {
 
 void Monster::attackPlayer(Character& player) {
 	player.currentHealth -= attack;
-
-	cout << name << " gave " << player.name << " " << attack << " damage." << endl;
 }
 
 void Monster::displayInfo() const {

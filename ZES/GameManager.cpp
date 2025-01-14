@@ -42,19 +42,28 @@ Monster* GameManager::generateMonster() {
 
 //배틀 로직
 void GameManager::battle(Character* player){
-
+    cout << endl << endl;
+    cout << "========================Befor The Battle========================" << endl;
     Monster* monster = generateMonster();
-    cout << "Monster " << monster->getName() << " is here! Battle begins!" << endl;
+    
+    displayStatus(player->getName(), player->getHealth(), player->attack);
+    displayStatus(monster->getName(), monster->getHealth(), monster->getAttack());
+
+    cout << "\nMonster " << monster->getName() << " is here! Battle begins!" << endl;
+
     bool isAlive = true;
     while (isAlive)
     {
-        monster->displayInfo();
-        cout << endl;
+        cout << endl << endl;
+
+        monster->takeDamage(player->attack);
+		cout << "==========================My Turn!==========================" << endl;
+        displayStatus(player->getName(), player->getHealth(), player->attack);
+        cout << "vvvvvvvvvvvvATTACKvvvvvvvvvvvv" << endl;
+        displayStatus(monster->getName(), monster->getHealth(), monster->getAttack());
 
         player->useItem();
-        monster->takeDamage(player->attack);
-        cout << "You gave " << monster->getName() << " " << player->attack << " damage." << endl;
-        monster->displayInfo();
+        
         if (monster->getHealth() <= 0)
         {
             cout << "You've killed " << monster->getName() << "!!" << endl;
@@ -64,15 +73,24 @@ void GameManager::battle(Character* player){
             player->levelUp();
             player->gold += rand() % 100 + 50;
             isAlive = false;
+            break;
         }
-        player->useItem();
+
         monster->attackPlayer(*player);
-        cout << "Player " << player->getName() << "'s current HP: " << player->getHealth() << ", AD: " << player->attack << endl;
+        cout << "=======================Monster's Turn!======================" << endl;
+        displayStatus(player->getName(), player->getHealth(), player->attack);
+        cout << "^^^^^^^^^^^^ATTACK^^^^^^^^^^^^" << endl;
+        displayStatus(monster->getName(), monster->getHealth(), monster->getAttack());
+
+        player->useItem();
+        
         if (player->getHealth() <= 0)
         {
             cout << "Player " << player->getName() << " is dead" << endl;
             isAlive = false;
+            break;
         }
+
     }
 	delete monster;
 }
@@ -100,4 +118,14 @@ void GameManager::initializeGame() {
 void GameManager::endGame() {
     // 게임 종료 로직
     cout << "The End..." << endl;
+}
+
+void GameManager::displayStatus(const string& name, int hp, int attackValue) {
+    int hpBar = static_cast<int>(hp / 10);
+    cout << "\n---------- " << name << " ----------" << endl;
+    while (hpBar-- > 0) {
+        cout << "O";
+    }
+    cout << "\nHP: " << hp << ", AD: " << attackValue << endl;
+    cout << "-------------------------------" << endl << endl;
 }
