@@ -103,3 +103,11 @@ void Character::takeDamage(int damage) {
 	currentHealth -= damage;
 	if (currentHealth < 0) currentHealth = 0;
 }
+
+int Character::getLevel() const {
+	return level;
+}
+
+int Character::getAttack() const {
+	return attack;
+}

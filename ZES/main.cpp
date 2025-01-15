@@ -2,82 +2,101 @@
 #include "Character.h"
 #include "Monster.h"
 #include "item.h"
+#include "shop.h"
 #include <vector>
 #include <iostream>
 
 using namespace std;
 
 int main() {
-    GameManager gameManager;
+	// ê²Œì„ ë§¤ë‹ˆì € ìƒì„±
+	GameManager gameManager;
 
-    // °ÔÀÓ ÃÊ±âÈ­
-    gameManager.initializeGame();
+	// ê²Œì„ ì´ˆê¸°í™”
+	gameManager.initializeGame();
 
-    // ÇÃ·¹ÀÌ¾î »ı¼º (Singleton)
-    cout << "Please enter a player name: ";
-    string playerName;
-    cin >> playerName;
-    Character* player = Character::getInstance(playerName);
+	// í”Œë ˆì´ì–´ ìƒì„± (Singleton)
+	cout << "Please enter a player name: ";
+	string playerName;
+	cin >> playerName;
+	Character* player = Character::getInstance(playerName);
 
-    cout << "The game begins!" << endl;
+	cout << "The game begins!" << endl;
 
-    bool isRunning = true;
+	//bool isRunning = true;
 
-    while (isRunning) {
+	while (!gameManager.isGameOver) {
 
-        if (player->level == 10)
-        {
+		if (player->level == 10)
+		{
+
+
 			cout << "Congratulations! You've reached the highest level!" << endl;
-			isRunning = false;
-			Monster* boss = new rainbowwatt();
 
-			cout << "The final boss, " << boss->getName() << " is here! Battle begins!" << endl;
+			gameManager.generateBoss(player);
+		}
 
+		if (gameManager.isGameOver) {
+			break;// ê²Œì„ ì¢…ë£Œ
+		}
 
+		cout << "\n=========================" << endl;
+		cout << "1. View Player Status" << endl;
+		cout << "2. View Inventory" << endl;\
+			cout << "3. Shop" << endl;
+		cout << "4. Start a battle" << endl;
+		cout << "5. End the game" << endl;
+		cout << "=========================" << endl;
 
-			delete boss;
+		int choice;
+		cout << "Choose: ";
+		cin >> choice;
+
+		switch (choice) {
+		case 1:
+			// í”Œë ˆì´ì–´ ìƒíƒœ í‘œì‹œ
+			player->displayStats();
 			break;
-        }
+		case 2:
+			// ì¸ë²¤í† ë¦¬ í‘œì‹œ
+			gameManager.displayInventory(player->inventory);
+			break;
+		case 3:
+			// ìƒì 
+			gameManager.shop(player);
+			break;
+		case 4:
+			// ëª¬ìŠ¤í„°ì™€ ì „íˆ¬
+			gameManager.battle(player);
+			break;
+		case 5:
+			// ê²Œì„ ì¢…ë£Œ
+			gameManager.endGame();
+			return 0;
 
-        cout << "\n=========================" << endl;
-        cout << "1. View Player Status" << endl;
-        cout << "2. View Inventory" << endl;
-        cout << "3. Start a battle" << endl;
-        cout << "4. End the game" << endl;
-        cout << "=========================" << endl;
-
-        int choice;
-        cout << "Choose: ";
-        cin >> choice;
-
-        switch (choice) {
-        case 1:
-            // ÇÃ·¹ÀÌ¾î »óÅÂ Ç¥½Ã
-            player->displayStats();
-            break;
-        case 2:
-            // ÀÎº¥Åä¸® Ç¥½Ã
-            gameManager.displayInventory(player->inventory);
-            break;
-        case 3:
-            // ¸ó½ºÅÍ¿Í ÀüÅõ
-            gameManager.battle(player);
-            break;
-        case 4:
-            // °ÔÀÓ Á¾·á
-            gameManager.endGame();
-            isRunning = false;
-            break;
-
-        default:
-            cout << "Invalid input, please re-select." << endl;
-        }
+		default:
+			cout << "Invalid input, please re-select." << endl;
+		}
 		if (player->currentHealth <= 0)
 		{
 			cout << "You are dead. Game Over." << endl;
-			isRunning = false;
+			break;
 		}
-    }
+	}
 
-    return 0;
+	// ê²Œì„ ì¢…ë£Œ ë©”ì‹œì§€ ì¶œë ¥
+	if (gameManager.isGameOver) {
+		cout << "\n=========================" << endl;
+		cout << "  Congratulations!" << endl;
+		cout << "  You've completed the game!" << endl;
+		cout << "=========================" << endl;
+		cout << "Press ENTER to exit...";
+		cin.ignore(); // ì´ì „ ì…ë ¥ ë¬´ì‹œ
+		cin.get();    // ENTER ì…ë ¥ ëŒ€ê¸°
+	}
+
+	return 0;
 }
+
+
+
