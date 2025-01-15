@@ -54,7 +54,18 @@ void Monster::dropitem(Character& character) {
         character.inventory.push_back(Drop);
     }
 }
+//bossmonster
+Monster* Monster::generateBoss(const string& name, int health, int Attack, int experience) {
+    srand(static_cast<unsigned int>(time(0)));
+    
+    //health
+    int healthRange = (rand() % (static_cast<int>(health * 1.5 - health) + 1)) + health;
 
+    //attack
+    int attackRange = (rand() % (static_cast<int>(Attack * 1.5 - Attack) + 1)) + Attack;
+
+    return new Monster(name, health, Attack,0);
+}
 
 
 redwatt::redwatt() : Monster("Red Watt", 20, 5, 10) { }

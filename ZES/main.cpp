@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "Monster.h"
 #include "item.h"
+#include "shop.h"
 #include <vector>
 #include <iostream>
 
@@ -10,10 +11,10 @@ using namespace std;
 int main() {
     GameManager gameManager;
 
-    // °ÔÀÓ ÃÊ±âÈ­
+    // ê²Œì„ ì´ˆê¸°í™”
     gameManager.initializeGame();
 
-    // ÇÃ·¹ÀÌ¾î »ı¼º (Singleton)
+    // í”Œë ˆì´ì–´ ìƒì„± (Singleton)
     cout << "Please enter a player name: ";
     string playerName;
     cin >> playerName;
@@ -27,23 +28,21 @@ int main() {
 
         if (player->level == 10)
         {
-			cout << "Congratulations! You've reached the highest level!" << endl;
-			isRunning = false;
-			Monster* boss = new rainbowwatt();
 
-			cout << "The final boss, " << boss->getName() << " is here! Battle begins!" << endl;
+            gameManager.generateBoss(player);
+            cout << "Congratulations! You've reached the highest level!" << endl;
 
 
-
-			delete boss;
-			break;
+            //isRunning = false;
+            //break;
         }
 
         cout << "\n=========================" << endl;
         cout << "1. View Player Status" << endl;
-        cout << "2. View Inventory" << endl;
-        cout << "3. Start a battle" << endl;
-        cout << "4. End the game" << endl;
+        cout << "2. View Inventory" << endl;\
+        cout << "3. Shop" << endl;
+        cout << "4. Start a battle" << endl;
+        cout << "5. End the game" << endl;
         cout << "=========================" << endl;
 
         int choice;
@@ -52,19 +51,23 @@ int main() {
 
         switch (choice) {
         case 1:
-            // ÇÃ·¹ÀÌ¾î »óÅÂ Ç¥½Ã
+            // í”Œë ˆì´ì–´ ìƒíƒœ í‘œì‹œ
             player->displayStats();
             break;
         case 2:
-            // ÀÎº¥Åä¸® Ç¥½Ã
+            // ì¸ë²¤í† ë¦¬ í‘œì‹œ
             gameManager.displayInventory(player->inventory);
             break;
         case 3:
-            // ¸ó½ºÅÍ¿Í ÀüÅõ
-            gameManager.battle(player);
+            // ìƒì 
+            gameManager.shop(player);
             break;
         case 4:
-            // °ÔÀÓ Á¾·á
+            // ëª¬ìŠ¤í„°ì™€ ì „íˆ¬
+            gameManager.battle(player);
+            break;
+        case 5:
+            // ê²Œì„ ì¢…ë£Œ
             gameManager.endGame();
             isRunning = false;
             break;
@@ -72,11 +75,11 @@ int main() {
         default:
             cout << "Invalid input, please re-select." << endl;
         }
-		if (player->currentHealth <= 0)
-		{
-			cout << "You are dead. Game Over." << endl;
-			isRunning = false;
-		}
+        if (player->currentHealth <= 0)
+        {
+            cout << "You are dead. Game Over." << endl;
+            isRunning = false;
+        }
     }
 
     return 0;
