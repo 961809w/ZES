@@ -2,38 +2,40 @@
 
 using namespace std;
 
-  HealthPotion::HealthPotion()
-      : name("HP potion"),
-        healthRestore(50)
-  {}
-  
-  string HealthPotion::getName() const
-  {
-      return name;
-  }
+HealthPotion::HealthPotion()
+	: name("HP potion"),
+	healthRestore(50)
+{
+}
 
-  void HealthPotion::use(Character* character)
-  {
-      character->currentHealth +=healthRestore;
-	  cout << "Current Health has been restored by " << healthRestore << endl;
-	  if (character->currentHealth > character->maxHealth)
-	  {
-		  character->currentHealth = character->maxHealth;
-	  }
-  }
+string HealthPotion::getName() const
+{
+	return name;
+}
 
-  AttackBoost::AttackBoost()
-	  : name("AD potion"),
-		attackIncrease(10)
-  {}
+void HealthPotion::use(Character* character)
+{
+	character->currentHealth += healthRestore;
+	cout << "Current Health has been restored by " << healthRestore << endl;
+	if (character->currentHealth > character->maxHealth)
+	{
+		character->currentHealth = character->maxHealth;
+	}
+}
 
-  string AttackBoost::getName() const
-  {
-      return name;
-  }
+AttackBoost::AttackBoost()
+	: name("AD potion"),
+	attackIncrease(10)
+{
+}
 
-  void AttackBoost::use(Character* character)
-  {
-	  character->attack += attackIncrease;
-	  cout << "The attack power has been increased by " << attackIncrease << endl;
-  }
+string AttackBoost::getName() const
+{
+	return name;
+}
+
+void AttackBoost::use(Character* character)
+{
+	character->attack += attackIncrease;
+	cout << "The attack power has been increased by " << attackIncrease << endl;
+}

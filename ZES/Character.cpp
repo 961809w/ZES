@@ -16,7 +16,7 @@ Character::Character(string name)
 	currentHealth(300),
 	attack(20),
 	experience(0),
-	gold(0){
+	gold(0) {
 }
 
 
@@ -87,10 +87,10 @@ string Character::getName() const
 	return name;
 }
 
-void Character::gainExperience(int experience)
+void Character::gainExperience(int exp)
 {
-	this->experience += experience;
-	cout << "You gained " << experience << " experience!" << endl;
+	cout << "You gained " << exp << " experience! " << this->experience << " -> " << this->experience + exp << endl;
+	this->experience += exp;
 	levelUp();
 }
 
@@ -102,4 +102,12 @@ int Character::getHealth()
 void Character::takeDamage(int damage) {
 	currentHealth -= damage;
 	if (currentHealth < 0) currentHealth = 0;
+}
+
+int Character::getLevel() const {
+	return level;
+}
+
+int Character::getAttack() const {
+	return attack;
 }
