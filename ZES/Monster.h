@@ -36,6 +36,8 @@ public:
     virtual void dropitem(Character& character);
 
     virtual void displayInfo() const;
+    //bossmonster
+    static Monster* generateBoss(const string& name, int health, int Attack, int experience);
 };
 
 class redwatt : public Monster {
