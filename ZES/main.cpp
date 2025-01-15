@@ -20,10 +20,7 @@ int main() {
 	string playerName;
 	cin >> playerName;
 	Character* player = Character::getInstance(playerName);
-
 	cout << "The game begins!" << endl;
-
-	//bool isRunning = true;
 
 	while (!gameManager.isGameOver) {
 
@@ -44,15 +41,13 @@ int main() {
 		cout << "\n=========================" << endl;
 		cout << "1. View Player Status" << endl;
 		cout << "2. View Inventory" << endl; \
-			cout << "3. Shop" << endl;
+		cout << "3. Shop" << endl;
 		cout << "4. Start a battle" << endl;
 		cout << "5. End the game" << endl;
 		cout << "=========================" << endl;
-
-		int choice;
 		cout << "Choose: ";
+		int choice;
 		cin >> choice;
-
 		gameManager.ClearConsole();
 
 		switch (choice) {
@@ -80,8 +75,9 @@ int main() {
 
 		default:
 
-			gameManager.buffer();
 			gameManager.ClearConsole();
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Invalid input, please re-select." << endl;
 		}
 		if (player->currentHealth <= 0)

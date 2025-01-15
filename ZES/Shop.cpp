@@ -81,10 +81,11 @@ void Shop::enter(Character& player) {
 			break;
 
 		default:
-			cout << "Invalid choice. Please try again." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Invalid choice. Please try again" << endl;
 
 			gm.buffer();
-			gm.ClearConsole();
 		}
 	}
 }
