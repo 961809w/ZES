@@ -27,10 +27,11 @@ int main() {
 
 	while (!gameManager.isGameOver) {
 
+		gameManager.buffer();
+		gameManager.ClearConsole();
+
 		if (player->level == 10)
 		{
-
-
 			cout << "Congratulations! You've reached the highest level!" << endl;
 
 			gameManager.generateBoss(player);
@@ -42,7 +43,7 @@ int main() {
 
 		cout << "\n=========================" << endl;
 		cout << "1. View Player Status" << endl;
-		cout << "2. View Inventory" << endl;\
+		cout << "2. View Inventory" << endl; \
 			cout << "3. Shop" << endl;
 		cout << "4. Start a battle" << endl;
 		cout << "5. End the game" << endl;
@@ -51,6 +52,8 @@ int main() {
 		int choice;
 		cout << "Choose: ";
 		cin >> choice;
+
+		gameManager.ClearConsole();
 
 		switch (choice) {
 		case 1:
@@ -68,6 +71,7 @@ int main() {
 		case 4:
 			// 몬스터와 전투
 			gameManager.battle(player);
+
 			break;
 		case 5:
 			// 게임 종료
@@ -75,6 +79,9 @@ int main() {
 			return 0;
 
 		default:
+
+			gameManager.buffer();
+			gameManager.ClearConsole();
 			cout << "Invalid input, please re-select." << endl;
 		}
 		if (player->currentHealth <= 0)
@@ -91,8 +98,8 @@ int main() {
 		cout << "  You've completed the game!" << endl;
 		cout << "=========================" << endl;
 		cout << "Press ENTER to exit...";
-		cin.ignore(); // 이전 입력 무시
-		cin.get();    // ENTER 입력 대기
+
+		gameManager.buffer();
 	}
 
 	return 0;
