@@ -169,12 +169,11 @@ void GameManager::bossBattle(Character* player, Monster* boss) {
 
 	displayStatus(boss->getName(), boss->getHealth(), boss->getAttack());
 
-	buffer();
-	ClearConsole();
-
 
 	bool isAlive = true;
 	while (isAlive) {
+		buffer();
+		ClearConsole();
 
 		boss->takeDamage(player->getAttack());
 		cout << "==========================My Turn!==========================" << endl;
@@ -182,48 +181,39 @@ void GameManager::bossBattle(Character* player, Monster* boss) {
 		cout << "vvvvvvvvvvvvATTACKvvvvvvvvvvvv" << endl;
 		displayStatus(boss->getName(), boss->getHealth(), boss->getAttack());
 
-		buffer();
-		ClearConsole();
-
 		player->useItem();
 
-		buffer();
-		ClearConsole();
-
-
 		if (boss->getHealth() <= 0) {
-			cout << "You've killed the boss: " << boss->getName() << "!!" << endl;
-			cout << "Congratulations! You've cleared the game!" << endl;
-			cout << "The game will be ended." << endl;
 
 			buffer();
 			ClearConsole();
 
+			cout << "You've killed the boss: " << boss->getName() << "!!" << endl;
+			cout << "Congratulations! You've cleared the game!" << endl;
+			cout << "The game will be ended." << endl;
 
 			isAlive = false;
 			isGameOver = true; // 게임 종료 상태 설정
 			break;
 		}
+
+		buffer();
+		ClearConsole();
+
 		boss->attackPlayer(*player);
 		cout << "=======================Boss's Turn!======================" << endl;
 		displayStatus(player->getName(), player->getHealth(), player->getAttack());
 		cout << "^^^^^^^^^^^^ATTACK^^^^^^^^^^^^" << endl;
 		displayStatus(boss->getName(), boss->getHealth(), boss->getAttack());
 
-		buffer();
-		ClearConsole();
-
 		player->useItem();
 
-		buffer();
-		ClearConsole();
-
-
 		if (player->getHealth() <= 0) {
-			cout << "Player " << player->getName() << " is dead" << endl;
 
 			buffer();
 			ClearConsole();
+
+			cout << "Player " << player->getName() << " is dead" << endl;
 
 			isGameOver = true;
 			isAlive = false;
