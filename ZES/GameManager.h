@@ -9,6 +9,10 @@
 
 class GameManager {
 public:
+
+    // 게임 종료 상태
+    bool isGameOver = false;
+
     // 몬스터 생성
     Monster* generateMonster();
 
@@ -29,15 +33,18 @@ public:
     //void displayPlayerStatus(Character* player);
 
     void displayStatus(const string& name, int hp, int attackValue);
+    
+    // 상점 호출 메서드
+    void shop(Character* player);
 
     // 보스 생성
-    void generateBoss();
-
+    void generateBoss(Character* player);
 
     // 보스 전투
     void bossBattle(Character* player, Monster* boss);
 
 
 };
+
 
 #endif

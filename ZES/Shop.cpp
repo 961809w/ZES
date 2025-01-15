@@ -5,6 +5,65 @@
 
 using namespace std;
 
+// 상점 입장
+void Shop::enter(Character& player) {
+    bool shopping = true;
+    while (shopping) {
+        cout << "\nWelcome to the Shop!" << endl;
+        cout << "1. Buy Items" << endl;
+        cout << "2. Sell Items" << endl;
+        cout << "3. Exit Shop" << endl;
+        cout << "Choose an option: ";
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            displayItems();
+            cout << "Enter the item number to buy (or -1 to cancel): ";
+            int buyIndex;
+            cin >> buyIndex;
+            if (buyIndex == -1) {
+                cout << "Cancelled buying items." << endl;
+            }
+            else {
+                buyItem(buyIndex, &player);
+            }
+            break;
+
+        case 2:
+            if (player.inventory.empty()) {
+                cout << "Your inventory is empty. Nothing to sell!" << endl;
+            }
+            else {
+                cout << "Your Inventory:" << endl;
+                for (int i = 0; i < player.inventory.size(); ++i) {
+                    cout << i << ". " << player.inventory[i]->getName() << endl;
+                }
+                cout << "Enter the item number to sell (or -1 to cancel): ";
+                int sellIndex;
+                cin >> sellIndex;
+                if (sellIndex == -1) {
+                    cout << "Cancelled selling items." << endl;
+                }
+                else {
+                    sellItem(sellIndex, &player);
+                }
+            }
+            break;
+
+        case 3:
+            cout << "Thank you for visiting the shop. Goodbye!" << endl;
+            shopping = false;
+            break;
+
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+        }
+    }
+}
+
+
 // 상점에 아이템 종류별 번호, 골드 설정
 Shop::Shop() {
     items.push_back(new HealthPotion);  // 0번: 체력 회복 포션

@@ -23,6 +23,9 @@ public:
     // 아이템 판매
     void sellItem(int index, Character* player);
 
+	// 상점 입장
+    void enter(Character& player);
+
 };
 
 #endif // SHOP_H
