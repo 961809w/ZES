@@ -23,7 +23,7 @@ public:
 	vector<Item*> inventory;
 
 	Character(string name);
-	
+
 	static Character* getInstance(string name = "");
 	void displayStats();
 	void levelUp();
