@@ -12,6 +12,7 @@ using namespace std;
 // level에 따라 다른 몬스터 생성
 Monster* GameManager::generateMonster() {
     srand(static_cast<unsigned int>(time(nullptr))); // 난수 시드 설정 (몬스터 랜덤 생성을 위해)
+
     int level = rand() % 16 + 1; // 1~30 사이의 레벨 랜덤 생성
     cout << "Create a level "<< level << " monster." << endl;
 
@@ -39,6 +40,7 @@ Monster* GameManager::generateMonster() {
     else {
         return new bluewattplus();
     }
+
 }
 
 
@@ -133,3 +135,4 @@ void GameManager::displayStatus(const string& name, int hp, int attackValue) {
     cout << "\nHP: " << hp << ", AD: " << attackValue << endl;
     cout << "-------------------------------" << endl << endl;
 }
+

@@ -10,10 +10,10 @@ using namespace std;
 int main() {
     GameManager gameManager;
 
-    // °ÔÀÓ ÃÊ±âÈ­
+    // ê²Œì„ ì´ˆê¸°í™”
     gameManager.initializeGame();
 
-    // ÇÃ·¹ÀÌ¾î »ı¼º (Singleton)
+    // í”Œë ˆì´ì–´ ìƒì„± (Singleton)
     cout << "Please enter a player name: ";
     string playerName;
     cin >> playerName;
@@ -29,13 +29,6 @@ int main() {
         {
 			cout << "Congratulations! You've reached the highest level!" << endl;
 			isRunning = false;
-			Monster* boss = new rainbowwatt();
-
-			cout << "The final boss, " << boss->getName() << " is here! Battle begins!" << endl;
-
-
-
-			delete boss;
 			break;
         }
 
@@ -52,19 +45,19 @@ int main() {
 
         switch (choice) {
         case 1:
-            // ÇÃ·¹ÀÌ¾î »óÅÂ Ç¥½Ã
+            // í”Œë ˆì´ì–´ ìƒíƒœ í‘œì‹œ
             player->displayStats();
             break;
         case 2:
-            // ÀÎº¥Åä¸® Ç¥½Ã
+            // ì¸ë²¤í† ë¦¬ í‘œì‹œ
             gameManager.displayInventory(player->inventory);
             break;
         case 3:
-            // ¸ó½ºÅÍ¿Í ÀüÅõ
+            // ëª¬ìŠ¤í„°ì™€ ì „íˆ¬
             gameManager.battle(player);
             break;
         case 4:
-            // °ÔÀÓ Á¾·á
+            // ê²Œì„ ì¢…ë£Œ
             gameManager.endGame();
             isRunning = false;
             break;
