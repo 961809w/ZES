@@ -29,6 +29,14 @@ public:
 
     void displayStatus(const string& name, int hp, int attackValue);
 
+    // 보스 생성
+    void generateBoss();
+
+
+    // 보스 전투
+    void bossBattle(Character* player, Monster* boss);
+
+
 };
 
 #endif

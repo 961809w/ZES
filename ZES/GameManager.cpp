@@ -136,3 +136,55 @@ void GameManager::displayStatus(const string& name, int hp, int attackValue) {
     cout << "-------------------------------" << endl << endl;
 }
 
+void GameManager::generateBoss(Character* player) {
+    // 캐릭터 레벨 10 이상이면 보스 몬스터 생성
+    if (player->getLevel() >= 10) {
+        Monster* boss = new rainbowwatt();
+        cout << "A boss monster has appeared: " << boss->getName() << "!" << endl;
+
+        // 보스 몬스터와 전투 시작
+        bossBattle(player, boss);
+    }
+}
+
+void GameManager::bossBattle(Character* player, Monster* boss) {
+
+    cout << " Boss Appears! " << boss->getName() << "!" << endl;
+
+    displayStatus(boss->getName(), boss->getHealth(), boss->getAttack());
+    bool isAlive = true;
+    while (isAlive) {
+
+        cout << endl << endl;
+
+        boss->takeDamage(player->getAttack());
+        cout << "==========================My Turn!==========================" << endl;
+        displayStatus(player->getName(), player->getHealth(), player->getAttack());
+        cout << "vvvvvvvvvvvvATTACKvvvvvvvvvvvv" << endl;
+        displayStatus(boss->getName(), boss->getHealth(), boss->getAttack());
+        player->useItem();
+
+        if (boss->getHealth() <= 0) {
+            cout << "You've killed the boss: " << boss->getName() << "!!" << endl;
+            cout << "Congratulations! You've cleared the game!" << endl;
+            cout << "The game will be ended." << endl;
+            isAlive = false;
+            break;
+        }
+        boss->attackPlayer(*player);
+        cout << "=======================Boss's Turn!======================" << endl;
+        displayStatus(player->getName(), player->getHealth(), player->getAttack());
+        cout << "^^^^^^^^^^^^ATTACK^^^^^^^^^^^^" << endl;
+        displayStatus(boss->getName(), boss->getHealth(), boss->getAttack());
+        player->useItem();
+
+        if (player->getHealth() <= 0) {
+            cout << "Player " << player->getName() << " is dead" << endl;
+            isAlive = false;
+            break;
+        }
+    }
+    delete boss;
+
+
+
