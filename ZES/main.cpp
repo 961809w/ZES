@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "Monster.h"
 #include "item.h"
+#include "shop.h"
 #include <vector>
 #include <iostream>
 
@@ -27,16 +28,21 @@ int main() {
 
         if (player->level == 10)
         {
-			cout << "Congratulations! You've reached the highest level!" << endl;
-			isRunning = false;
-			break;
+
+            gameManager.generateBoss(player);
+            cout << "Congratulations! You've reached the highest level!" << endl;
+
+
+            //isRunning = false;
+            //break;
         }
 
         cout << "\n=========================" << endl;
         cout << "1. View Player Status" << endl;
-        cout << "2. View Inventory" << endl;
-        cout << "3. Start a battle" << endl;
-        cout << "4. End the game" << endl;
+        cout << "2. View Inventory" << endl;\
+        cout << "3. Shop" << endl;
+        cout << "4. Start a battle" << endl;
+        cout << "5. End the game" << endl;
         cout << "=========================" << endl;
 
         int choice;
@@ -53,10 +59,14 @@ int main() {
             gameManager.displayInventory(player->inventory);
             break;
         case 3:
+            // 상점
+            gameManager.shop(player);
+            break;
+        case 4:
             // 몬스터와 전투
             gameManager.battle(player);
             break;
-        case 4:
+        case 5:
             // 게임 종료
             gameManager.endGame();
             isRunning = false;
@@ -65,11 +75,11 @@ int main() {
         default:
             cout << "Invalid input, please re-select." << endl;
         }
-		if (player->currentHealth <= 0)
-		{
-			cout << "You are dead. Game Over." << endl;
-			isRunning = false;
-		}
+        if (player->currentHealth <= 0)
+        {
+            cout << "You are dead. Game Over." << endl;
+            isRunning = false;
+        }
     }
 
     return 0;
