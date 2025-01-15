@@ -28,12 +28,17 @@ int main() {
 	while (!gameManager.isGameOver) {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         if (player->level == 10)
         {
 
             gameManager.generateBoss(player);
 
             cout << "Congratulations! You've reached the highest level!" << endl;
+=======
+		if (player->level == 10)
+		{
+>>>>>>> Stashed changes
 =======
 		if (player->level == 10)
 		{
