@@ -29,6 +29,13 @@ int main() {
         {
 			cout << "Congratulations! You've reached the highest level!" << endl;
 			isRunning = false;
+			Monster* boss = new rainbowwatt();
+
+			cout << "The final boss, " << boss->getName() << " is here! Battle begins!" << endl;
+
+
+
+			delete boss;
 			break;
         }
 
