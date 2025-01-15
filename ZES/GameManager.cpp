@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "Monster.h"
 #include "item.h"
+#include "shop.h"
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -169,6 +170,7 @@ void GameManager::bossBattle(Character* player, Monster* boss) {
             cout << "Congratulations! You've cleared the game!" << endl;
             cout << "The game will be ended." << endl;
             isAlive = false;
+            isGameOver = true; // 게임 종료 상태 설정
             break;
         }
         boss->attackPlayer(*player);
@@ -185,6 +187,14 @@ void GameManager::bossBattle(Character* player, Monster* boss) {
         }
     }
     delete boss;
+}
+    
+void GameManager::shop(Character* player) {
+	// 상점 호출 로직
+	Shop shop;
+	shop.enter(*player);
+}
+
 
 
 
