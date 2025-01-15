@@ -36,7 +36,6 @@ public:
     virtual void dropitem(Character& character);
 
     virtual void displayInfo() const;
-    int test;
 };
 
 class redwatt : public Monster {
