@@ -33,7 +33,6 @@ public:
 	void gainExperience(int experience);
 	int getHealth();
 	void takeDamage(int damage);
-	void test;
 };
 
 #endif
