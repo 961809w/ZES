@@ -12,32 +12,38 @@ using namespace std;
 // 몬스터 생성 로직
 Monster* GameManager::generateMonster() {
     srand(static_cast<unsigned int>(time(nullptr))); // 난수 시드 설정 (몬스터 랜덤 생성을 위해)
-    int level = rand() % 40 + 1; // 1~40 사이의 레벨 랜덤 생성
+    int level = rand() % 16 + 1; // 1~16 사이의 레벨 랜덤 생성
 
     // 일반 몬스터 생성
     cout << "Create a level " << level << " monster." << endl;
 
-    if (level <= 5) {
+    if (level <= 2) {
         return new redwatt();
     }
-    else if (level <= 10) {
+    else if (level <= 4) {
         return new redwattplus();
     }
-    else if (level <= 15) {
+    else if (level <= 6) {
         return new yellowwatt();
     }
-    else if (level <= 20) {
+    else if (level <= 8) {
+        return new yellowwattplus();
+    }
+    else if (level <= 10) {
         return new greenwatt();
     }
-    else if (level <= 25) {
+    else if (level <= 12) {
+        return new greenwattplus();
+    }
+    else if (level <= 14) {
         return new bluewatt();
     }
-    else if (level <= 30) {
+    else if (level <= 16) {
         return new bluewattplus(); // 일반 레벨의 최고 몬스터
     }
      else { 
         cout << "Boss Monster is here!" << endl;
-        return generateBossMonster(); // 레벨이 30을 초과한 경우 보스 몬스터 생성
+        return generateBossMonster(); // 레벨이 16을 초과한 경우 보스 몬스터 생성
     }
 }
 
