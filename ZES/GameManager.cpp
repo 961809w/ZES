@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "Monster.h"
 #include "item.h"
+#include "shop.h"
 #include <vector>
 #include <iostream>
 #include <algorithm>

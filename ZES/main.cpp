@@ -30,6 +30,7 @@ int main() {
         {
 
             gameManager.generateBoss(player);
+
             cout << "Congratulations! You've reached the highest level!" << endl;
 
 
