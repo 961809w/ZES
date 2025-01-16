@@ -65,6 +65,7 @@ void Shop::enter(Character& player) {
 					gm.buffer();
 				}
 				else {
+					gm.ClearConsole();
 					sellItem(sellIndex, &player);
 					gm.buffer();
 				}
@@ -112,48 +113,73 @@ void Shop::displayItems() {
 
 // 상점 방문 (구매 -> 판매 -> 종료)
 void Shop::buyItem(int index, Character* player) {
-
-	if (index >= 1 && index <= items.size()) {
-		int price = prices[index - 1];
-		if (player->gold >= price) {
-			player->gold -= price;
-			cout << "You bought " << items[index - 1]->getName() << " from the shop." << endl;
-			cout << "Remaining gold: " << player->gold << endl;
-
-			// 아이템을 캐릭터 인벤토리 벡터에 'push_back()'으로 추가 - push_back()은 벡터의 끝에 요소를 추가하는 함수
-			player->inventory.push_back(items[index - 1]);
-
-			// 아이템 사용
-			items[index - 1]->use(player);
-		}
-		else {
-			gm.ClearConsole();
-			cout << "Not enough gold to make the purchase." << endl;
-		}
-	}
-	else {
+	if (index < 1 || index >(int)items.size()) {
 		cout << "Invalid item number." << endl;
 		gm.buffer();
+		return;
+	}
+
+	int price = prices[index - 1];
+	if (player->gold < price) {
+		gm.ClearConsole();
+		cout << "Not enough gold to make the purchase." << endl;
+		return;
+	}
+
+	player->gold -= price;
+
+	// 상점 아이템을 그대로 넘기지 않고 새로 new 해서 복제
+	Item* original = items[index - 1];
+	Item* clonedItem = nullptr;
+	if (dynamic_cast<HealthPotion*>(original)) {
+		clonedItem = new HealthPotion();
+	}
+	else if (dynamic_cast<AttackBoost*>(original)) {
+		clonedItem = new AttackBoost();
+	}
+	// 필요한 다른 아이템이 있으면 else if 추가
+
+	if (clonedItem) {
+		player->inventory.push_back(clonedItem);
+
+		cout << "You bought " << clonedItem->getName() << " for "
+			<< price << " gold." << endl;
+		cout << "Remaining gold: " << player->gold << endl;
 	}
 }
 
 void Shop::sellItem(int index, Character* player) {
-	if (index >= 1 && index <= player->inventory.size()) {
-		int price = prices[index - 1] / 2;  // 판매 금액은 원래 가격의 절반
-		player->gold += price;
-		cout << "You sold " << player->inventory[index - 1]->getName() << " from your inventory." << endl;
-		cout << "Selling price: " << price << " gold" << endl;
-		cout << "Current gold: " << player->gold << endl;
+	// 유효 인덱스 체크
+	if (index < 1 || index > player->inventory.size()) {
+		cout << "Invalid item number." << endl;
+		return;
+	}
 
-		// 판매한 아이템 삭제
-		delete player->inventory[index - 1];
-		player->inventory.erase(player->inventory.begin() + index - 1);
+	// 실제 판매 처리
+	Item* itemToSell = player->inventory[index - 1];
 
-		// 상점의 가격 정보도 삭제
-		prices.erase(prices.begin() + index - 1);
+	// 예: 아이템 타입(이름)에 따라 판매가 결정
+	int sellPrice = 0;
+	if (itemToSell->getName() == "HP potion") {
+		sellPrice = 50; // 100골드짜리 아이템이었다고 치고 절반은 50
+	}
+	else if (itemToSell->getName() == "AD potion") {
+		sellPrice = 100; // 200골드짜리 아이템이었다고 치고 절반은 100
 	}
 	else {
-		cout << "Invalid item number." << endl;
+		// 그 외는 0원 혹은 별도 계산
+		sellPrice = 0;
 	}
+
+	// 골드 증액 및 메시지 출력
+	player->gold += sellPrice;
+	cout << "You sold " << itemToSell->getName() << " for " << sellPrice << " gold." << endl;
+	cout << "Current gold: " << player->gold << endl;
+
+	// 인벤토리에서 제거 (실제 아이템 포인터 delete 여부는 구조에 따라 결정)
+	delete itemToSell;
+	player->inventory.erase(player->inventory.begin() + (index - 1));
+
+	// *** 상점의 prices.erase(...) 이런 건 하지 않는다! ***
 }
 
