@@ -28,6 +28,7 @@ void Shop::enter(Character& player) {
 			cout << "Enter the item number to buy (or 0 to cancel): ";
 			int buyIndex;
 			cin >> buyIndex;
+
 			if (buyIndex == 0) {
 				gm.ClearConsole();
 				cout << "Cancelled buying items." << endl;
@@ -38,7 +39,8 @@ void Shop::enter(Character& player) {
 				buyItem(buyIndex, &player);
 				gm.buffer();
 			}
-
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 			break;
 
@@ -48,7 +50,6 @@ void Shop::enter(Character& player) {
 				cout << "Your inventory is empty. Nothing to sell!" << endl;
 
 				gm.buffer();
-				gm.ClearConsole();
 			}
 			else {
 				cout << "Your Inventory:" << endl;
@@ -59,18 +60,17 @@ void Shop::enter(Character& player) {
 				int sellIndex;
 				cin >> sellIndex;
 				if (sellIndex == 0) {
+					gm.ClearConsole();
 					cout << "Cancelled selling items." << endl;
 					gm.buffer();
-					gm.ClearConsole();
 				}
 				else {
-					gm.ClearConsole();
 					sellItem(sellIndex, &player);
 					gm.buffer();
-					gm.ClearConsole();
 				}
 			}
-
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 			break;
 
@@ -112,6 +112,7 @@ void Shop::displayItems() {
 
 // 상점 방문 (구매 -> 판매 -> 종료)
 void Shop::buyItem(int index, Character* player) {
+
 	if (index >= 1 && index <= items.size()) {
 		int price = prices[index - 1];
 		if (player->gold >= price) {
@@ -128,15 +129,11 @@ void Shop::buyItem(int index, Character* player) {
 		else {
 			gm.ClearConsole();
 			cout << "Not enough gold to make the purchase." << endl;
-			gm.buffer();
-			gm.ClearConsole();
 		}
 	}
 	else {
-		gm.ClearConsole();
 		cout << "Invalid item number." << endl;
 		gm.buffer();
-		gm.ClearConsole();
 	}
 }
 
