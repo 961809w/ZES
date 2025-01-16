@@ -104,6 +104,9 @@ Shop::Shop() {
 void Shop::displayItems() {
 	cout << "Items available in the shop:" << endl;
 	for (int i = 0; i < items.size(); i++) {
+		if (items[i] == nullptr) {  // 삭제된 아이템은 출력하지 않음
+			continue;
+		}
 		cout << i + 1 << ". " << items[i]->getName()  // 아이템 이름
 			<< " (Price: " << prices[i] << " gold)"  // 아이템 가격
 			<< endl;
@@ -114,6 +117,12 @@ void Shop::displayItems() {
 void Shop::buyItem(int index, Character* player) {
 
 	if (index >= 1 && index <= items.size()) {
+		if (items[index - 1] == nullptr) {  // 삭제된 아이템 검사
+			cout << "This item is no longer available." << endl;
+			return;
+		}
+
+
 		int price = prices[index - 1];
 		if (player->gold >= price) {
 			player->gold -= price;
@@ -149,8 +158,9 @@ void Shop::sellItem(int index, Character* player) {
 		delete player->inventory[index - 1];
 		player->inventory.erase(player->inventory.begin() + index - 1);
 
-		// 상점의 가격 정보도 삭제
-		prices.erase(prices.begin() + index - 1);
+		// 상점의 아이템 및 가격 정보 삭제
+		items.erase(items.begin() + index - 1);  // `items`에서 삭제
+		prices.erase(prices.begin() + index - 1);  // `prices`에서 삭제
 	}
 	else {
 		cout << "Invalid item number." << endl;
