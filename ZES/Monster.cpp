@@ -10,19 +10,19 @@ using namespace std;
 class Character;
 
 //Monster class 구현
-Monster::Monster() : name(""), health(0), attack(0), experience(0) { }
+Monster::Monster() : name(""), health(0), attack(0), experience(0) {}
 
 Monster::Monster(const string& name, int health, int attack, int experience) : name(name), health(health), attack(attack), experience(experience) {}
 
 Monster::~Monster() {}
 
-string Monster::getName() const {return name;}
+string Monster::getName() const { return name; }
 
-int Monster::getHealth() const {return health;}
+int Monster::getHealth() const { return health; }
 
-int Monster::getAttack() const {return attack;}
+int Monster::getAttack() const { return attack; }
 
-int Monster::getExperience() const {return experience;}
+int Monster::getExperience() const { return experience; }
 
 void Monster::takeDamage(int damage) {
 	health -= damage;
@@ -39,38 +39,50 @@ void Monster::displayInfo() const {
 
 void Monster::dropitem(Character& character) {
 
-    int chance = rand() % 100;
-    Item* Drop = nullptr;
+	int chance = rand() % 100;
+	Item* Drop = nullptr;
 
-    if (chance < 30) {
-        cout << "You got an HP potion" << endl;
-        Drop = new HealthPotion();
-    } else if (chance < 60) {
-        cout << "You got an AD potion" << endl;
-        Drop = new AttackBoost();
-    }
+	if (chance < 30) {
+		cout << "You got an HP potion" << endl;
+		Drop = new HealthPotion();
+	}
+	else if (chance < 60) {
+		cout << "You got an AD potion" << endl;
+		Drop = new AttackBoost();
+	}
 
-    if (Drop) {
-        character.inventory.push_back(Drop);
-    }
+	if (Drop) {
+		character.inventory.push_back(Drop);
+	}
+}
+//bossmonster
+Monster* Monster::generateBoss(const string& name, int health, int Attack, int experience) {
+	srand(static_cast<unsigned int>(time(0)));
+
+	//health
+	int healthRange = (rand() % (static_cast<int>(health * 1.5 - health) + 1)) + health;
+
+	//attack
+	int attackRange = (rand() % (static_cast<int>(Attack * 1.5 - Attack) + 1)) + Attack;
+
+	return new Monster(name, health, Attack, 0);
 }
 
 
+redwatt::redwatt() : Monster("Red Watt", 20, 5, 10) {}
 
-redwatt::redwatt() : Monster("Red Watt", 20, 5, 10) { }
+redwattplus::redwattplus() : Monster("Red Watt+", 30, 6, 15) {}
 
-redwattplus::redwattplus() : Monster("Red Watt+", 30, 6, 15) { }
+yellowwatt::yellowwatt() : Monster("Yellow Watt", 50, 9, 20) {}
 
-yellowwatt::yellowwatt() : Monster("Yellow Watt", 50, 9, 20) { }
+yellowwattplus::yellowwattplus() : Monster("Yellow Watt+", 55, 10, 25) {}
 
-yellowwattplus::yellowwattplus() : Monster("Yellow Watt+", 55, 10, 25) { }
+greenwatt::greenwatt() : Monster("Green Watt", 60, 12, 30) {}
 
-greenwatt::greenwatt() : Monster("Green Watt", 60, 12, 30) { }
+greenwattplus::greenwattplus() : Monster("Green Watt+", 65, 14, 35) {}
 
-greenwattplus::greenwattplus() : Monster("Green Watt+", 65, 14, 35) { }
+bluewatt::bluewatt() : Monster("Blue Watt", 80, 18, 40) {}
 
-bluewatt::bluewatt() : Monster("Blue Watt", 80, 18, 40) { }
+bluewattplus::bluewattplus() : Monster("Blue Watt+", 100, 25, 45) {}
 
-bluewattplus::bluewattplus() : Monster("Blue Watt+", 100, 25, 45) { }
-
-rainbowwatt::rainbowwatt() : Monster("Rainbow Watt", 300, 50, 150) { }
+rainbowwatt::rainbowwatt() : Monster("Rainbow Watt", 300, 50, 150) {}
