@@ -10,10 +10,10 @@ using namespace std;
 
 int main() {
 	// 게임 매니저 생성
-	GameManager gameManager;
+	GameManager gm;
 
 	// 게임 초기화
-	gameManager.initializeGame();
+	gm.initializeGame();
 
 	// 플레이어 생성 (Singleton)
 	cout << "Please enter a player name: ";
@@ -22,19 +22,19 @@ int main() {
 	Character* player = Character::getInstance(playerName);
 	cout << "The game begins!" << endl;
 
-	while (!gameManager.isGameOver) {
+	while (!gm.isGameOver) {
 
-		gameManager.buffer();
-		gameManager.ClearConsole();
+		gm.buffer();
+		gm.ClearConsole();
 
 		if (player->level == 10)
 		{
 			cout << "Congratulations! You've reached the highest level!" << endl;
 
-			gameManager.generateBoss(player);
+			gm.generateBoss(player);
 		}
 
-		if (gameManager.isGameOver) {
+		if (gm.isGameOver) {
 			break;// 게임 종료
 		}
 
@@ -48,34 +48,36 @@ int main() {
 		cout << "Choose: ";
 		int choice;
 		cin >> choice;
-		gameManager.ClearConsole();
+		gm.ClearConsole();
 
 		switch (choice) {
 		case 1:
 			// 플레이어 상태 표시
 			player->displayStats();
+			gm.buffer();
 			break;
 		case 2:
 			// 인벤토리 표시
-			gameManager.displayInventory(player->inventory);
+			gm.displayInventory(player->inventory);
+			gm.buffer();
 			break;
 		case 3:
 			// 상점
-			gameManager.shop(player);
+			gm.shop(player);
 			break;
 		case 4:
 			// 몬스터와 전투
-			gameManager.battle(player);
+			gm.battle(player);
 
 			break;
 		case 5:
 			// 게임 종료
-			gameManager.endGame();
+			gm.endGame();
 			return 0;
 
 		default:
 
-			gameManager.ClearConsole();
+			gm.ClearConsole();
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Invalid input, please re-select." << endl;
@@ -88,14 +90,14 @@ int main() {
 	}
 
 	// 게임 종료 메시지 출력
-	if (gameManager.isGameOver) {
+	if (gm.isGameOver) {
 		cout << "\n=========================" << endl;
 		cout << "  Congratulations!" << endl;
 		cout << "  You've completed the game!" << endl;
 		cout << "=========================" << endl;
 		cout << "Press ENTER to exit...";
 
-		gameManager.buffer();
+		gm.buffer();
 	}
 
 	return 0;
