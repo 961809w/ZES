@@ -231,8 +231,8 @@ void GameManager::shop(Character* player) {
 
 void GameManager::buffer() {
 	//출력 분할 로직
-	cin.ignore();
-	cin.get();
+	string dummy;
+	getline(cin, dummy);
 }
 
 void GameManager::ClearConsole() {
